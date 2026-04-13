@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Eazy F&I Solutions</title>
+  <meta name="description" content="Vehicle finance services for individuals and businesses. Personal finance, refinancing, balloon settlement, and more." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── SERVICES-SPECIFIC ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: var(--surface);
+      padding: 2.8rem 2.4rem;
+      transition: background 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+
+    .service-card:hover { background: var(--surface-2); }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 2.4rem; right: 2.4rem;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .service-card:hover::after { opacity: 1; }
+
+    .service-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 700;
+      color: rgba(40,110,230,0.12);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--white-dim);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.83rem;
+      color: var(--white-dim);
+    }
+
+    .feature-list li::before {
+      content: '';
+      width: 16px; height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* Eligibility section */
+    .eligibility {
+      background: var(--deep);
+    }
+
+    .eligibility__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    .check-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      margin-top: 1.2rem;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      font-size: 0.9rem;
+      color: var(--white-dim);
+      line-height: 1.5;
+    }
+
+    .check-list li svg {
+      width: 18px; height: 18px;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .info-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem 2.2rem;
+    }
+
+    .info-box h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .info-box p {
+      font-size: 0.88rem;
+      color: var(--white-dim);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    /* Comparison table */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2.5rem;
+    }
+
+    .compare-table th {
+      text-align: left;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 1rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .compare-table td {
+      padding: 1rem 1.2rem;
+      font-size: 0.88rem;
+      color: var(--white-dim);
+      border-bottom: 1px solid rgba(40,110,230,0.12);
+      vertical-align: top;
+    }
+
+    .compare-table td:first-child {
+      color: var(--white);
+      font-weight: 400;
+    }
+
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: rgba(40,110,230,0.12); }
+
+    .check-icon { color: var(--gold); }
+    .x-icon { color: rgba(248,245,239,0.2); }
+
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .eligibility__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__logo-mark">Eazy<span>.</span></div>
+        <div class="nav__logo-sub">F&I Solutions</div>
+      </a>
+      <div class="nav__links">
+        <a href="index.html">Home</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="dealer-partners.html">Dealer Partners</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html" class="nav__cta">Get in Touch</a>
+      </div>
+      <button class="nav__hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav__mobile">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="dealer-partners.html">Dealer Partners</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html" class="nav__cta btn btn--gold">Get in Touch</a>
+  </div>
+
+  <!-- ── PAGE HERO ── -->
+  <section class="page-hero">
+    <div class="page-hero__inner">
+      <div class="eyebrow reveal">Our Services</div>
+      <h1 class="display-heading reveal reveal--delay-1">Finance solutions for <em>every</em> situation</h1>
+      <div class="divider reveal reveal--delay-2"></div>
+      <p class="lead reveal reveal--delay-3">From first-time buyers to experienced investors, we structure finance that fits your life — not the other way around.</p>
+    </div>
+  </section>
+
+  <!-- ── SERVICES GRID ── -->
+  <section class="section" style="padding-top:0;">
+    <div class="section__inner">
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-num">01</div>
+          <h3>New Vehicle Finance</h3>
+          <p>Drive away in the vehicle you want with competitive interest rates and flexible repayment terms structured around your budget.</p>
+          <ul class="feature-list">
+            <li>Up to 72-month terms</li>
+            <li>Balloon payment options</li>
+            <li>Multiple lender comparison</li>
+            <li>Fast pre-approval</li>
+          </ul>
+        </div>
+        <div class="service-card reveal reveal--delay-1">
+          <div class="service-num">02</div>
+          <h3>Used Vehicle Finance</h3>
+          <p>Quality pre-owned vehicles financed with the same rigour as new — with lenders who understand used car valuations.</p>
+          <ul class="feature-list">
+            <li>Private & dealer purchases</li>
+            <li>Vehicles up to 10 years old</li>
+            <li>Competitive rates on certified pre-owned</li>
+            <li>Trade-in included</li>
+          </ul>
+        </div>
+        <div class="service-card reveal reveal--delay-2">
+          <div class="service-num">03</div>
+          <h3>Refinancing</h3>
+          <p>Already have a vehicle on finance? We may be able to reduce your monthly instalment or unlock equity — without changing vehicles.</p>
+          <ul class="feature-list">
+            <li>Rate reduction potential</li>
+            <li>Extended term options</li>
+            <li>Cash-out refinancing</li>
+            <li>No early settlement penalty review</li>
+          </ul>
+        </div>
+        <div class="service-card reveal reveal--delay-1">
+          <div class="service-num">04</div>
+          <h3>Balloon Settlement Finance</h3>
+          <p>When your balloon payment comes due, we structure the settlement so you keep your vehicle without the financial shock.</p>
+          <ul class="feature-list">
+            <li>Structured settlement plan</li>
+            <li>Refinance the residual value</li>
+            <li>Trade-up pathways</li>
+            <li>Proactive planning from 6 months out</li>
+          </ul>
+        </div>
+        <div class="service-card reveal reveal--delay-2">
+          <div class="service-num">05</div>
+          <h3>Business Vehicle Finance</h3>
+          <p>Finance a fleet or a single business vehicle with tax-efficient structures and terms that match your business cash flow.</p>
+          <ul class="feature-list">
+            <li>Operating lease options</li>
+            <li>Finance lease & installment sale</li>
+            <li>Fleet management solutions</li>
+            <li>VAT & tax structuring</li>
+          </ul>
+        </div>
+        <div class="service-card reveal reveal--delay-3">
+          <div class="service-num">06</div>
+          <h3>Credit-Challenged Applicants</h3>
+          <p>A difficult credit history doesn't have to mean no. We work with specialist lenders who look beyond the score.</p>
+          <ul class="feature-list">
+            <li>Impaired credit specialists</li>
+            <li>Larger deposit options</li>
+            <li>Credit rehabilitation guidance</li>
+            <li>Honest assessment — no empty promises</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ELIGIBILITY ── -->
+  <section class="section eligibility">
+    <div class="section__inner">
+      <div class="reveal">
+        <div class="eyebrow">Eligibility</div>
+        <h2 class="section-heading">What you <em>need</em> to apply</h2>
+      </div>
+      <div class="eligibility__grid">
+        <div>
+          <p class="lead" style="margin-bottom:0;">We keep the paperwork simple. Here's what we typically need to process your application quickly.</p>
+          <ul class="check-list" style="margin-top:2rem;">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              South African ID document or valid passport
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Latest 3 months' payslips (salaried) or 6 months' bank statements (self-employed)
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Proof of residence (not older than 3 months)
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Latest 3 months' bank statements
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Driver's licence (for the vehicle being financed)
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Vehicle details (for a specific purchase) or budget range
+            </li>
+          </ul>
+          <div style="margin-top:2.5rem;">
+            <a href="contact.html" class="btn btn--gold">
+              Start Your Application
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="reveal reveal--delay-2">
+          <div class="info-box" style="margin-bottom:1rem;">
+            <h3>NCA Compliance</h3>
+            <p>All credit applications are processed in accordance with the National Credit Act (NCA), Act 34 of 2005. We conduct responsible affordability assessments to ensure you're not over-committed.</p>
+          </div>
+          <div class="info-box">
+            <h3>Your data is protected</h3>
+            <p>We process all personal information in compliance with the Protection of Personal Information Act (POPIA), Act 4 of 2013. Your information is used only for the purpose of processing your credit application and is never sold to third parties.</p>
+            <a href="contact.html" class="btn btn--ghost" style="margin-top:0.5rem; font-size:0.72rem; padding:9px 18px;">View Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── COMPARE ── -->
+  <section class="section">
+    <div class="section__inner">
+      <div class="reveal">
+        <div class="eyebrow">Finance Structures</div>
+        <h2 class="section-heading">Choosing the <em>right structure</em></h2>
+        <p class="lead" style="margin-top:1rem;">Not all finance is the same. We'll recommend the structure that genuinely suits your situation.</p>
+      </div>
+      <div style="overflow-x:auto; margin-top:0;" class="reveal reveal--delay-2">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Structure</th>
+              <th>You Own the Vehicle</th>
+              <th>Balloon Option</th>
+              <th>Best For</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Instalment Sale (HP)</td>
+              <td class="check-icon">&#10003; Yes, from day one</td>
+              <td class="check-icon">&#10003; Optional</td>
+              <td>Individuals & businesses wanting full ownership</td>
+            </tr>
+            <tr>
+              <td>Finance Lease</td>
+              <td style="color:var(--white-dim);">At end of term</td>
+              <td class="check-icon">&#10003; Built-in residual</td>
+              <td>Lower monthly cost, VAT-registered entities</td>
+            </tr>
+            <tr>
+              <td>Operating Lease</td>
+              <td class="x-icon">&#10005; Lessor retains ownership</td>
+              <td>—</td>
+              <td>Businesses wanting off-balance-sheet financing</td>
+            </tr>
+            <tr>
+              <td>Refinancing</td>
+              <td class="check-icon">&#10003; Already yours</td>
+              <td>Depends on existing deal</td>
+              <td>Reducing instalments on existing agreements</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer__inner">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-mark">Eazy<span>.</span></div>
+          <div class="footer__brand-sub">F&I Solutions</div>
+          <p class="footer__brand-desc">Providing simple, strategic, and reliable vehicle finance solutions to individuals and dealerships across South Africa.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="dealer-partners.html">Dealer Partners</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Personal Vehicle Finance</a></li>
+            <li><a href="services.html">Refinancing</a></li>
+            <li><a href="dealer-partners.html">Dealer F&I Solutions</a></li>
+            <li><a href="dealer-partners.html">Floor Plan Finance</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.56 3.37 2 2 0 0 1 3.54 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.52A16 16 0 0 0 15.48 16l.88-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23 17.29z"/></svg>
+            <span>+27 (0) 00 000 0000</span>
+          </div>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>info@eazy.co.za</span>
+          </div>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>South Africa</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__compliance">
+          <strong style="color:rgba(248,245,239,0.5);">Regulatory Notice:</strong> Eazy F&I Solutions is an authorised Financial Services Provider (FSP) in terms of the Financial Advisory and Intermediary Services Act, 37 of 2002 (FAIS Act). FSP License No. [XXXXX]. We are committed to treating customers fairly and operating in full compliance with the National Credit Act (NCA) and the Protection of Personal Information Act (POPIA), Act 4 of 2013.
+        </p>
+        <div class="footer__copy">
+          <span>&copy; 2025 Eazy F&I Solutions (Pty) Ltd. All rights reserved.</span>
+          <span>Registered in South Africa</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

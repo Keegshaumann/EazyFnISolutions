@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — Eazy F&I Solutions</title>
+  <meta name="description" content="The Eazy F&I Solutions story — who we are, what we stand for, and why we exist." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── ABOUT-SPECIFIC ── */
+    .about-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3.5rem;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-visual__box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 3rem;
+      position: relative;
+    }
+
+    .about-visual__box::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 2rem; right: 2rem;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .pull-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.3;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .pull-quote span { color: var(--gold); }
+
+    .quote-source {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+    }
+
+    /* Values */
+    .values-section {
+      background: var(--deep);
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+
+    .value-card {
+      background: var(--surface);
+      padding: 2.5rem 2rem;
+      transition: background 0.3s;
+      text-align: center;
+    }
+
+    .value-card:hover { background: var(--surface-2); }
+
+    .value-card__icon {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      line-height: 1;
+    }
+
+    .value-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+    }
+
+    .value-card p {
+      font-size: 0.83rem;
+      color: var(--white-dim);
+      line-height: 1.65;
+    }
+
+    /* Team section */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .team-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s var(--ease-out);
+    }
+
+    .team-card:hover {
+      border-color: rgba(40,110,230,0.12);
+      transform: translateY(-3px);
+    }
+
+    .team-card__avatar {
+      height: 200px;
+      background: linear-gradient(135deg, var(--surface-2), var(--deep));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-card__avatar::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60px;
+      background: linear-gradient(0deg, rgba(24,24,30,0.8), transparent);
+    }
+
+    .team-card__avatar .initials {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 700;
+      color: rgba(40,110,230,0.12);
+    }
+
+    .team-card__body {
+      padding: 1.5rem;
+    }
+
+    .team-card__name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .team-card__role {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .team-card__bio {
+      font-size: 0.83rem;
+      color: var(--white-dim);
+      line-height: 1.6;
+    }
+
+    /* Compliance section */
+    .compliance-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .compliance-item {
+      display: flex;
+      gap: 1.2rem;
+      padding: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .compliance-item__badge {
+      width: 44px; height: 44px;
+      background: var(--gold-dim);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .compliance-item h4 {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+
+    .compliance-item p {
+      font-size: 0.8rem;
+      color: var(--white-dim);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .about-intro { grid-template-columns: 1fr; gap: 2.5rem; }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+      .team-grid { grid-template-columns: 1fr; }
+      .compliance-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .values-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__logo-mark">Eazy<span>.</span></div>
+        <div class="nav__logo-sub">F&I Solutions</div>
+      </a>
+      <div class="nav__links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="dealer-partners.html">Dealer Partners</a>
+        <a href="about.html" class="active">About Us</a>
+        <a href="contact.html" class="nav__cta">Get in Touch</a>
+      </div>
+      <button class="nav__hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav__mobile">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="dealer-partners.html">Dealer Partners</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html" class="nav__cta btn btn--gold">Get in Touch</a>
+  </div>
+
+  <!-- ── PAGE HERO ── -->
+  <section class="page-hero">
+    <div class="page-hero__inner">
+      <div class="eyebrow reveal">Our Story</div>
+      <h1 class="display-heading reveal reveal--delay-1">Finance done <em>differently</em></h1>
+      <div class="divider reveal reveal--delay-2"></div>
+      <p class="lead reveal reveal--delay-3">Eazy F&I Solutions was built on a simple frustration: too many South Africans were being turned away or overcharged because no one was truly in their corner during the finance process.</p>
+    </div>
+  </section>
+
+  <!-- ── ABOUT INTRO ── -->
+  <section class="section" style="padding-top:0;">
+    <div class="section__inner">
+      <div class="about-intro">
+        <div class="reveal">
+          <div class="eyebrow">Who We Are</div>
+          <h2 class="section-heading">Your <em>finance strategist</em>, not just a broker</h2>
+          <p style="color:var(--white-dim); font-size:0.95rem; line-height:1.8; margin: 1.2rem 0;">We're not a bank, and we don't want to be. We're the layer between you and the financial institutions — armed with lender relationships, market knowledge, and genuine motivation to get you the best possible outcome.</p>
+          <p style="color:var(--white-dim); font-size:0.95rem; line-height:1.8; margin-bottom:2rem;">Whether you're a first-time buyer nervous about your credit score, a self-employed individual struggling to prove income, or a dealership looking to improve your floor approval rates — Eazy F&I Solutions exists to solve that problem.</p>
+          <a href="contact.html" class="btn btn--gold">
+            Talk to Us
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+        <div class="about-visual reveal reveal--delay-2">
+          <div class="about-visual__box">
+            <div class="pull-quote">"We sit on <span>your side</span> of the table — every time."</div>
+            <div class="quote-source">The Eazy F&I Solutions commitment</div>
+          </div>
+          <div style="margin-top:1px; display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border-radius:0 0 4px 4px; overflow:hidden;">
+            <div style="background:var(--surface); padding:1.5rem; text-align:center;">
+              <div style="font-family:var(--font-display); font-size:2rem; font-weight:700; color:var(--gold);">12+</div>
+              <div style="font-size:0.72rem; color:var(--white-dim); letter-spacing:0.1em; text-transform:uppercase;">Lending Partners</div>
+            </div>
+            <div style="background:var(--surface); padding:1.5rem; text-align:center;">
+              <div style="font-family:var(--font-display); font-size:2rem; font-weight:700; color:var(--gold);">500+</div>
+              <div style="font-size:0.72rem; color:var(--white-dim); letter-spacing:0.1em; text-transform:uppercase;">Deals Closed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VALUES ── -->
+  <section class="section values-section">
+    <div class="section__inner">
+      <div class="reveal" style="text-align:center;">
+        <div class="eyebrow" style="justify-content:center;">What We Stand For</div>
+        <h2 class="section-heading">Our <em>values</em></h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card reveal reveal--delay-1">
+          <div class="value-card__icon">S</div>
+          <h3>Simple</h3>
+          <p>Finance is complex enough. Our process, communication, and documentation should never add to that complexity.</p>
+        </div>
+        <div class="value-card reveal reveal--delay-2">
+          <div class="value-card__icon">S</div>
+          <h3>Strategic</h3>
+          <p>We don't just submit applications — we structure them. Every deal is approached with a strategy to maximise approval probability and value.</p>
+        </div>
+        <div class="value-card reveal reveal--delay-3">
+          <div class="value-card__icon">R</div>
+          <h3>Reliable</h3>
+          <p>We do what we say, when we say it. If there's a problem, you hear from us — not the other way around.</p>
+        </div>
+        <div class="value-card reveal reveal--delay-4">
+          <div class="value-card__icon">H</div>
+          <h3>Honest</h3>
+          <p>We'll tell you if a deal won't work and why. We'd rather give you a hard truth today than a false hope that wastes everyone's time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TEAM ── -->
+  <section class="section">
+    <div class="section__inner">
+      <div class="reveal">
+        <div class="eyebrow">Our People</div>
+        <h2 class="section-heading">The team <em>behind the deals</em></h2>
+        <p class="lead" style="margin-top:1rem;">Experienced finance professionals who've sat on both sides of the table — and know exactly how to navigate it.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card reveal reveal--delay-1">
+          <div class="team-card__avatar">
+            <span class="initials">DP</span>
+          </div>
+          <div class="team-card__body">
+            <div class="team-card__name">David Peterson</div>
+            <div class="team-card__role">Founder & Managing Director</div>
+            <p class="team-card__bio">15+ years in vehicle finance across major South African banks before founding Eazy F&I Solutions to offer clients genuinely independent advice.</p>
+          </div>
+        </div>
+        <div class="team-card reveal reveal--delay-2">
+          <div class="team-card__avatar">
+            <span class="initials">SM</span>
+          </div>
+          <div class="team-card__body">
+            <div class="team-card__name">Sarah Molefe</div>
+            <div class="team-card__role">Head of Dealer Partnerships</div>
+            <p class="team-card__bio">Former Dealer Principal with a deep understanding of the pressures and opportunities in automotive retail F&I operations.</p>
+          </div>
+        </div>
+        <div class="team-card reveal reveal--delay-3">
+          <div class="team-card__avatar">
+            <span class="initials">JN</span>
+          </div>
+          <div class="team-card__body">
+            <div class="team-card__name">James Nkosi</div>
+            <div class="team-card__role">Senior Finance Consultant</div>
+            <p class="team-card__bio">Specialist in complex applications — self-employed applicants, credit-challenged profiles, and structured business finance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── COMPLIANCE ── -->
+  <section class="section" style="background:var(--deep);">
+    <div class="section__inner">
+      <div class="reveal">
+        <div class="eyebrow">Compliance & Regulation</div>
+        <h2 class="section-heading">You're in <em>safe hands</em></h2>
+        <p class="lead" style="margin-top:1rem;">We operate in a regulated industry and take that responsibility seriously. Here's how we stay compliant.</p>
+      </div>
+      <div class="compliance-grid">
+        <div class="compliance-item reveal reveal--delay-1">
+          <div class="compliance-item__badge">FAIS<br>Act</div>
+          <div>
+            <h4>FAIS Act — Financial Advisory & Intermediary Services</h4>
+            <p>Eazy F&I Solutions holds an authorised FSP licence under the FAIS Act, 37 of 2002. All financial advice and intermediary services are provided by qualified, fit-and-proper representatives.</p>
+          </div>
+        </div>
+        <div class="compliance-item reveal reveal--delay-2">
+          <div class="compliance-item__badge">NCA</div>
+          <div>
+            <h4>National Credit Act</h4>
+            <p>All credit applications are processed in compliance with the NCA, Act 34 of 2005, including responsible affordability assessments and full disclosure of all credit costs.</p>
+          </div>
+        </div>
+        <div class="compliance-item reveal reveal--delay-1">
+          <div class="compliance-item__badge">POPIA</div>
+          <div>
+            <h4>POPIA — Data Privacy</h4>
+            <p>Your personal information is processed lawfully and securely under POPIA, Act 4 of 2013. We only process what we need, retain it for the minimum necessary period, and never sell your data.</p>
+          </div>
+        </div>
+        <div class="compliance-item reveal reveal--delay-2">
+          <div class="compliance-item__badge">TCF</div>
+          <div>
+            <h4>Treating Customers Fairly</h4>
+            <p>We subscribe to the FSB's TCF outcomes framework. Your interests are considered in every recommendation we make — full stop.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer__inner">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-mark">Eazy<span>.</span></div>
+          <div class="footer__brand-sub">F&I Solutions</div>
+          <p class="footer__brand-desc">Providing simple, strategic, and reliable vehicle finance solutions to individuals and dealerships across South Africa.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="dealer-partners.html">Dealer Partners</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Personal Vehicle Finance</a></li>
+            <li><a href="services.html">Refinancing</a></li>
+            <li><a href="dealer-partners.html">Dealer F&I Solutions</a></li>
+            <li><a href="dealer-partners.html">Floor Plan Finance</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.56 3.37 2 2 0 0 1 3.54 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.52A16 16 0 0 0 15.48 16l.88-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23 17.29z"/></svg>
+            <span>+27 (0) 00 000 0000</span>
+          </div>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>info@eazy.co.za</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__compliance">
+          <strong style="color:rgba(248,245,239,0.5);">Regulatory Notice:</strong> Eazy F&I Solutions is an authorised Financial Services Provider (FSP) in terms of the Financial Advisory and Intermediary Services Act, 37 of 2002 (FAIS Act). FSP License No. [XXXXX]. We operate in full compliance with the National Credit Act (NCA) and POPIA, Act 4 of 2013.
+        </p>
+        <div class="footer__copy">
+          <span>&copy; 2025 Eazy F&I Solutions (Pty) Ltd. All rights reserved.</span>
+          <span>Registered in South Africa</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

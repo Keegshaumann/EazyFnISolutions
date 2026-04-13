@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eazy F&I Solutions — Vehicle Finance Solutions</title>
+  <meta name="description" content="Simple, strategic, and reliable vehicle finance for South Africans and dealerships. More approvals. More profit. Less hassle." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── HOME-SPECIFIC ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: calc(var(--nav-h) + 40px) var(--gutter) clamp(80px, 10vw, 120px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .hero__bg::before {
+      content: '';
+      position: absolute;
+      top: -20%; right: -10%;
+      width: 700px; height: 700px;
+      background: radial-gradient(ellipse, rgba(40,110,230,0.12) 0%, transparent 65%);
+      border-radius: 50%;
+    }
+
+    .hero__bg::after {
+      content: '';
+      position: absolute;
+      bottom: -10%; left: -5%;
+      width: 500px; height: 500px;
+      background: radial-gradient(ellipse, rgba(40,110,230,0.12) 0%, transparent 65%);
+      border-radius: 50%;
+    }
+
+    /* Decorative geometric line */
+    .hero__line {
+      position: absolute;
+      top: 0; right: 240px;
+      width: 1px; height: 100%;
+      background: linear-gradient(180deg, transparent 0%, rgba(40,110,230,0.12) 30%, rgba(40,110,230,0.12) 70%, transparent 100%);
+    }
+
+    .hero__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero__left { max-width: 580px; }
+
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.1s var(--ease-out) forwards;
+    }
+
+    .hero__eyebrow::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--gold);
+    }
+
+    .hero__heading {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      margin-bottom: 1.6rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.2s var(--ease-out) forwards;
+    }
+
+    .hero__heading em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero__sub {
+      font-size: clamp(1rem, 1.5vw, 1.1rem);
+      color: var(--white-dim);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.3s var(--ease-out) forwards;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.4s var(--ease-out) forwards;
+    }
+
+    .hero__right {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      opacity: 0;
+      animation: fadeRight 0.9s 0.3s var(--ease-out) forwards;
+    }
+
+    .audience-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2.2rem 2.4rem;
+      transition: border-color 0.3s, background 0.3s;
+      position: relative;
+    }
+
+    .audience-card:first-child { border-radius: 4px 4px 0 0; }
+    .audience-card:last-child  { border-radius: 0 0 4px 4px; }
+
+    .audience-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--gold);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .audience-card:hover {
+      border-color: rgba(40,110,230,0.12);
+      background: var(--surface-2);
+    }
+
+    .audience-card:hover::before { opacity: 1; }
+
+    .audience-card__label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .audience-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .audience-card p {
+      font-size: 0.85rem;
+      color: var(--white-dim);
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .audience-card .link-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: gap 0.2s;
+    }
+
+    .audience-card .link-arrow:hover { gap: 0.7rem; }
+
+    .audience-card .link-arrow svg { width: 14px; height: 14px; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeRight {
+      from { opacity: 0; transform: translateX(28px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Trust bar */
+    .trust-bar {
+      background: var(--deep);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.4rem var(--gutter);
+    }
+
+    .trust-bar__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.78rem;
+      color: var(--white-dim);
+    }
+
+    .trust-item svg { width: 16px; height: 16px; color: var(--gold); flex-shrink: 0; }
+
+    /* Stats section */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 4rem;
+    }
+
+    .stats-grid .stat-block { border-radius: 0; border: none; }
+
+    /* Why section */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+
+    .why-grid .card { border-radius: 0; border: none; background: var(--surface); }
+
+    /* Process section */
+    .process {
+      background: var(--deep);
+    }
+
+    .process__steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 3.5rem;
+      position: relative;
+    }
+
+    .process__steps::before {
+      content: '';
+      position: absolute;
+      top: 36px; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .process__step {
+      text-align: center;
+      padding: 0 1.5rem;
+      position: relative;
+    }
+
+    .process__num {
+      width: 72px; height: 72px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold);
+      background: var(--deep);
+      position: relative;
+      z-index: 1;
+    }
+
+    .process__step h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .process__step p {
+      font-size: 0.85rem;
+      color: var(--white-dim);
+      line-height: 1.6;
+    }
+
+    /* CTA Banner */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: clamp(3rem, 5vw, 5rem) clamp(2rem, 5vw, 5rem);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 60%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .cta-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; right: -80px;
+      width: 300px; height: 300px;
+      background: radial-gradient(ellipse, rgba(40,110,230,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    @media (max-width: 860px) {
+      .hero__inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero__right { animation: fadeUp 0.9s 0.4s var(--ease-out) forwards; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .process__steps { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+      .process__steps::before { display: none; }
+      .why-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .stats-grid { grid-template-columns: 1fr; }
+      .trust-bar__inner { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__logo-mark">Eazy<span>.</span></div>
+        <div class="nav__logo-sub">F&I Solutions</div>
+      </a>
+      <div class="nav__links">
+        <a href="index.html" class="active">Home</a>
+        <a href="services.html">Services</a>
+        <a href="dealer-partners.html">Dealer Partners</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html" class="nav__cta">Get in Touch</a>
+      </div>
+      <button class="nav__hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile nav -->
+  <div class="nav__mobile">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="dealer-partners.html">Dealer Partners</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html" class="nav__cta btn btn--gold">Get in Touch</a>
+  </div>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__line"></div>
+    <div class="hero__inner">
+      <div class="hero__left">
+        <div class="hero__eyebrow">Vehicle Finance Specialists</div>
+        <h1 class="hero__heading">
+          Simple. Strategic.<br><em>Reliable.</em>
+        </h1>
+        <p class="hero__sub">
+          We connect South Africans with vehicle finance that works — and we give dealerships the tools to close more deals, faster. No jargon. No runaround. Just results.
+        </p>
+        <div class="hero__actions">
+          <a href="contact.html" class="btn btn--gold">
+            Apply Now
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="services.html" class="btn btn--outline">Our Services</a>
+        </div>
+      </div>
+      <div class="hero__right">
+        <div class="audience-card">
+          <div class="audience-card__label">For Individuals</div>
+          <h3>Your next vehicle, financed right</h3>
+          <p>Whether it's your first car or an upgrade, we navigate the finance landscape so you get the best possible deal with minimum stress.</p>
+          <a href="services.html" class="link-arrow">
+            Explore personal finance
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+        <div class="audience-card">
+          <div class="audience-card__label">For Dealerships</div>
+          <h3>More Approvals. More Profit.<br>Less Hassle.</h3>
+          <p>Partner with us to maximise your floor approvals and grow your F&I revenue — without the administrative burden.</p>
+          <a href="dealer-partners.html" class="link-arrow">
+            Become a dealer partner
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TRUST BAR ── -->
+  <div class="trust-bar">
+    <div class="trust-bar__inner">
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        FAIS Act Compliant
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Fast Turnaround Times
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Multiple Lender Network
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Dedicated Support Team
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        POPIA Compliant
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STATS ── -->
+  <section class="section">
+    <div class="section__inner">
+      <div class="reveal">
+        <div class="eyebrow">Our Track Record</div>
+        <h2 class="section-heading">Numbers that <em>speak</em></h2>
+      </div>
+      <div class="stats-grid reveal reveal--delay-2">
+        <div class="stat-block">
+          <div class="stat-block__num stat-counter" data-target="94" data-suffix="%">94%</div>
+          <div class="stat-block__label">Approval Rate</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-block__num stat-counter" data-target="48" data-suffix="h">48h</div>
+          <div class="stat-block__label">Average Turnaround</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-block__num stat-counter" data-target="12" data-suffix="+">12+</div>
+          <div class="stat-block__label">Lending Partners</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-block__num stat-counter" data-target="500" data-suffix="+">500+</div>
+          <div class="stat-block__label">Deals Closed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY PFM ── -->
+  <section class="section" style="background: var(--deep); padding-top: 0;">
+    <div class="section__inner">
+      <div class="reveal">
+        <div class="eyebrow">Why Eazy F&I Solutions</div>
+        <h2 class="section-heading">We make finance <em>work for you</em></h2>
+        <p class="lead" style="margin-top:1rem;">We're not a bank. We're your finance strategist — sitting on your side of the table, navigating the system so you get approved.</p>
+      </div>
+      <div class="why-grid">
+        <div class="card reveal reveal--delay-1">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3>Speed Without Compromise</h3>
+          <p>Our streamlined process gets applications in front of the right lenders immediately. We don't let your deal go cold.</p>
+        </div>
+        <div class="card reveal reveal--delay-2">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Access to Multiple Lenders</h3>
+          <p>One application. Multiple banks and financiers. We shop the market so you get competitive rates and real options.</p>
+        </div>
+        <div class="card reveal reveal--delay-3">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Transparent & Regulated</h3>
+          <p>We operate under the Financial Advisory and Intermediary Services Act. You can trust that every recommendation is in your interest.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section class="section process">
+    <div class="section__inner">
+      <div class="reveal" style="text-align:center; margin-bottom: 0;">
+        <div class="eyebrow" style="justify-content:center;">How It Works</div>
+        <h2 class="section-heading">From application to <em>keys in hand</em></h2>
+      </div>
+      <div class="process__steps">
+        <div class="process__step reveal reveal--delay-1">
+          <div class="process__num">1</div>
+          <h3>Submit Your Details</h3>
+          <p>Fill in our quick application form — it takes under 5 minutes and we keep your data secure.</p>
+        </div>
+        <div class="process__step reveal reveal--delay-2">
+          <div class="process__num">2</div>
+          <h3>We Shop the Market</h3>
+          <p>Your profile goes to our full panel of lenders simultaneously. No single-bank gamble.</p>
+        </div>
+        <div class="process__step reveal reveal--delay-3">
+          <div class="process__num">3</div>
+          <h3>Receive Your Offer</h3>
+          <p>We present the best approval with clear, honest terms. No hidden fees, no surprises.</p>
+        </div>
+        <div class="process__step reveal reveal--delay-4">
+          <div class="process__num">4</div>
+          <h3>Drive Away</h3>
+          <p>Once you accept, we handle the paperwork. You focus on picking your vehicle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="section">
+    <div class="section__inner">
+      <div class="cta-banner reveal">
+        <div class="eyebrow" style="justify-content:center;">Ready to start?</div>
+        <h2 class="display-heading" style="margin:0.8rem 0 1.2rem;">Get your finance sorted <em>today</em></h2>
+        <p style="color:var(--white-dim); max-width:480px; margin:0 auto 2.5rem; font-size:1rem;">Whether you're buying your first vehicle or scaling your dealership's F&I operation — we're ready to help.</p>
+        <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn--gold">
+            Start Your Application
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="dealer-partners.html" class="btn btn--outline">Dealer Partnership Enquiry</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer__inner">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-mark">Eazy<span>.</span></div>
+          <div class="footer__brand-sub">F&I Solutions</div>
+          <p class="footer__brand-desc">Providing simple, strategic, and reliable vehicle finance solutions to individuals and dealerships across South Africa.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="dealer-partners.html">Dealer Partners</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Personal Vehicle Finance</a></li>
+            <li><a href="services.html">Refinancing</a></li>
+            <li><a href="dealer-partners.html">Dealer F&I Solutions</a></li>
+            <li><a href="dealer-partners.html">Floor Plan Finance</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.56 3.37 2 2 0 0 1 3.54 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.52A16 16 0 0 0 15.48 16l.88-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23 17.29z"/></svg>
+            <span>+27 (0) 00 000 0000</span>
+          </div>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>info@eazy.co.za</span>
+          </div>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>South Africa</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__compliance">
+          <strong style="color:rgba(248,245,239,0.5);">Regulatory Notice:</strong> Eazy F&I Solutions is an authorised Financial Services Provider (FSP) in terms of the Financial Advisory and Intermediary Services Act, 37 of 2002 (FAIS Act). FSP License No. [XXXXX]. We are committed to treating customers fairly and operating in full compliance with the National Credit Act (NCA) and the Protection of Personal Information Act (POPIA), Act 4 of 2013. Your personal information is processed securely and will not be shared without your consent.
+        </p>
+        <div class="footer__copy">
+          <span>&copy; 2025 Eazy F&I Solutions (Pty) Ltd. All rights reserved.</span>
+          <span>Registered in South Africa</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

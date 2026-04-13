@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Eazy F&I Solutions</title>
+  <meta name="description" content="Get in touch with Eazy F&I Solutions. Apply for vehicle finance or make a dealer partnership enquiry." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── CONTACT-SPECIFIC ── */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      margin-top: 3.5rem;
+      align-items: start;
+    }
+
+    .contact-info {
+      position: sticky;
+      top: calc(var(--nav-h) + 2rem);
+    }
+
+    .contact-channel {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    .contact-channel:hover { border-color: rgba(40,110,230,0.12); }
+
+    .contact-channel__icon {
+      width: 40px; height: 40px;
+      background: var(--gold-dim);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .contact-channel__icon svg { width: 18px; height: 18px; }
+
+    .contact-channel__label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-channel__value {
+      font-size: 0.95rem;
+      color: var(--white);
+    }
+
+    .contact-channel__note {
+      font-size: 0.78rem;
+      color: var(--white-dim);
+      margin-top: 0.2rem;
+    }
+
+    /* Hours */
+    .hours-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+
+    .hours-box__header {
+      padding: 0.8rem 1.2rem;
+      background: var(--gold-dim);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.7rem 1.2rem;
+      font-size: 0.83rem;
+      border-bottom: 1px solid rgba(40,110,230,0.12);
+    }
+
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row span:first-child { color: var(--white-dim); }
+    .hours-row span:last-child { color: var(--white); }
+
+    /* Form tabs */
+    .form-tabs {
+      display: flex;
+      gap: 1px;
+      background: var(--border);
+      border-radius: 4px 4px 0 0;
+      overflow: hidden;
+      margin-bottom: 0;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 1rem 1.5rem;
+      background: var(--surface-2);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      text-align: center;
+    }
+
+    .tab-btn:hover { background: var(--surface); color: var(--white); }
+
+    .tab-btn.active {
+      background: var(--surface);
+      color: var(--gold);
+      box-shadow: inset 0 -2px 0 var(--gold);
+    }
+
+    .tab-content {
+      display: none;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+      padding: 2.5rem;
+    }
+
+    .tab-content.active { display: block; }
+
+    .tab-content h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .tab-content .sub {
+      font-size: 0.85rem;
+      color: var(--white-dim);
+      margin-bottom: 2rem;
+    }
+
+    /* FAQ */
+    .faq-section { background: var(--deep); }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .faq-item {
+      padding: 1.8rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .faq-item h4 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: var(--white);
+    }
+
+    .faq-item p {
+      font-size: 0.85rem;
+      color: var(--white-dim);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-info { position: static; }
+      .faq-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <div class="nav__logo-mark">Eazy<span>.</span></div>
+        <div class="nav__logo-sub">F&I Solutions</div>
+      </a>
+      <div class="nav__links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="dealer-partners.html">Dealer Partners</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html" class="nav__cta active">Get in Touch</a>
+      </div>
+      <button class="nav__hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav__mobile">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="dealer-partners.html">Dealer Partners</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html" class="nav__cta btn btn--gold">Get in Touch</a>
+  </div>
+
+  <!-- ── PAGE HERO ── -->
+  <section class="page-hero">
+    <div class="page-hero__inner">
+      <div class="eyebrow reveal">Get In Touch</div>
+      <h1 class="display-heading reveal reveal--delay-1">Let's <em>talk finance</em></h1>
+      <div class="divider reveal reveal--delay-2"></div>
+      <p class="lead reveal reveal--delay-3">Whether you're ready to apply, have a question, or want to explore a dealer partnership — we respond fast. No runaround.</p>
+    </div>
+  </section>
+
+  <!-- ── CONTACT LAYOUT ── -->
+  <section class="section" style="padding-top:0;">
+    <div class="section__inner">
+      <div class="contact-layout">
+
+        <!-- INFO PANEL -->
+        <div class="contact-info reveal">
+          <div class="contact-channel">
+            <div class="contact-channel__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.56 3.37 2 2 0 0 1 3.54 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.52A16 16 0 0 0 15.48 16l.88-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23 17.29z"/></svg>
+            </div>
+            <div>
+              <div class="contact-channel__label">Phone</div>
+              <div class="contact-channel__value">+27 (0) 00 000 0000</div>
+              <div class="contact-channel__note">Mon–Fri, 8am–5pm</div>
+            </div>
+          </div>
+
+          <div class="contact-channel">
+            <div class="contact-channel__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-channel__label">Email</div>
+              <div class="contact-channel__value">info@eazy.co.za</div>
+              <div class="contact-channel__note">We reply within 4 business hours</div>
+            </div>
+          </div>
+
+          <div class="contact-channel">
+            <div class="contact-channel__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div>
+              <div class="contact-channel__label">WhatsApp</div>
+              <div class="contact-channel__value">+27 (0) 00 000 0000</div>
+              <div class="contact-channel__note">Fast, informal — great for quick questions</div>
+            </div>
+          </div>
+
+          <div class="hours-box">
+            <div class="hours-box__header">Business Hours</div>
+            <div class="hours-row"><span>Monday – Friday</span><span>08:00 – 17:00</span></div>
+            <div class="hours-row"><span>Saturday</span><span>09:00 – 13:00</span></div>
+            <div class="hours-row"><span>Sunday & Public Holidays</span><span>Closed</span></div>
+          </div>
+
+          <div style="margin-top:1.5rem; padding:1.2rem 1.5rem; background:var(--gold-dim); border:1px solid rgba(40,110,230,0.12); border-radius:4px; font-size:0.8rem; color:var(--white-dim); line-height:1.6;">
+            <strong style="color:var(--gold); font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">POPIA Notice</strong>
+            Personal information submitted via this form will be processed solely for the purpose of responding to your enquiry. Your data will not be shared without your consent. View our <a href="#" style="color:var(--gold); text-decoration:underline;">full privacy notice</a>.
+          </div>
+        </div>
+
+        <!-- FORMS -->
+        <div class="reveal reveal--delay-2">
+          <div class="form-tabs">
+            <button class="tab-btn active" data-tab="personal">Personal Finance</button>
+            <button class="tab-btn" data-tab="dealer">Dealer Enquiry</button>
+            <button class="tab-btn" data-tab="general">General</button>
+          </div>
+
+          <!-- PERSONAL APPLICATION -->
+          <div class="tab-content active" id="tab-personal">
+            <h3>Vehicle Finance Application</h3>
+            <p class="sub">Tell us what you need and we'll get back to you within 4 business hours.</p>
+            <form data-validate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="p-first">First Name *</label>
+                  <input type="text" id="p-first" placeholder="Your first name" required />
+                </div>
+                <div class="form-group">
+                  <label for="p-last">Last Name *</label>
+                  <input type="text" id="p-last" placeholder="Your surname" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="p-email">Email Address *</label>
+                  <input type="email" id="p-email" placeholder="your@email.co.za" required />
+                </div>
+                <div class="form-group">
+                  <label for="p-phone">Mobile Number *</label>
+                  <input type="tel" id="p-phone" placeholder="+27 00 000 0000" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="p-type">Finance Type *</label>
+                  <select id="p-type" required>
+                    <option value="">Select…</option>
+                    <option>New Vehicle Finance</option>
+                    <option>Used Vehicle Finance</option>
+                    <option>Refinancing</option>
+                    <option>Balloon Settlement</option>
+                    <option>Business Vehicle Finance</option>
+                    <option>Not sure — advise me</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="p-budget">Approximate Budget / Vehicle Price</label>
+                  <input type="text" id="p-budget" placeholder="e.g. R250,000" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="p-employment">Employment Status *</label>
+                <select id="p-employment" required>
+                  <option value="">Select…</option>
+                  <option>Permanently employed</option>
+                  <option>Contract employee</option>
+                  <option>Self-employed / Business owner</option>
+                  <option>Pensioner / Other income</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="p-notes">Additional Notes</label>
+                <textarea id="p-notes" placeholder="Tell us anything relevant — vehicle you have in mind, credit history concerns, etc."></textarea>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="p-popia" required />
+                <label for="p-popia">I consent to Eazy F&I Solutions processing my personal information to assist with this finance enquiry, in accordance with the <a href="#">POPIA Privacy Notice</a>. I understand my information will not be shared without my consent. *</label>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="p-credit" />
+                <label for="p-credit">I consent to Eazy F&I Solutions conducting a soft credit check as part of the initial assessment (this will not affect my credit score).</label>
+              </div>
+              <button type="submit" class="btn btn--gold" style="width:100%; justify-content:center; margin-top:0.5rem;">
+                Submit Application
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </form>
+          </div>
+
+          <!-- DEALER ENQUIRY -->
+          <div class="tab-content" id="tab-dealer">
+            <h3>Dealer Partnership Enquiry</h3>
+            <p class="sub">Tell us about your dealership and we'll set up a meeting.</p>
+            <form data-validate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="d-name">Your Name *</label>
+                  <input type="text" id="d-name" placeholder="Full name" required />
+                </div>
+                <div class="form-group">
+                  <label for="d-role">Your Role *</label>
+                  <input type="text" id="d-role" placeholder="e.g. Dealer Principal, F&I Manager" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="d-dealer">Dealership Name *</label>
+                <input type="text" id="d-dealer" placeholder="Trading name" required />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="d-email">Email *</label>
+                  <input type="email" id="d-email" placeholder="you@dealership.co.za" required />
+                </div>
+                <div class="form-group">
+                  <label for="d-phone">Phone *</label>
+                  <input type="tel" id="d-phone" placeholder="+27 00 000 0000" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="d-volume">Monthly Deal Volume</label>
+                <select id="d-volume">
+                  <option value="">Select…</option>
+                  <option>Under 10/month</option>
+                  <option>10–30/month</option>
+                  <option>30–60/month</option>
+                  <option>60+/month</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="d-message">What's your biggest F&I challenge right now?</label>
+                <textarea id="d-message" placeholder="Approval rates, lender access, admin overhead…"></textarea>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="d-popia" required />
+                <label for="d-popia">I consent to Eazy F&I Solutions processing my information for this dealer partnership enquiry, in accordance with the <a href="#">POPIA Privacy Notice</a>. *</label>
+              </div>
+              <button type="submit" class="btn btn--gold" style="width:100%; justify-content:center; margin-top:0.5rem;">
+                Submit Dealer Enquiry
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </form>
+          </div>
+
+          <!-- GENERAL -->
+          <div class="tab-content" id="tab-general">
+            <h3>General Enquiry</h3>
+            <p class="sub">Not sure where to start? Just ask — we'll point you in the right direction.</p>
+            <form data-validate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="g-name">Your Name *</label>
+                  <input type="text" id="g-name" placeholder="Your full name" required />
+                </div>
+                <div class="form-group">
+                  <label for="g-email">Email Address *</label>
+                  <input type="email" id="g-email" placeholder="your@email.co.za" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="g-phone">Phone Number</label>
+                <input type="tel" id="g-phone" placeholder="+27 00 000 0000" />
+              </div>
+              <div class="form-group">
+                <label for="g-message">Your Message *</label>
+                <textarea id="g-message" placeholder="How can we help?" required></textarea>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="g-popia" required />
+                <label for="g-popia">I consent to Eazy F&I Solutions processing my personal information to respond to this enquiry, in accordance with the <a href="#">POPIA Privacy Notice</a>. *</label>
+              </div>
+              <button type="submit" class="btn btn--gold" style="width:100%; justify-content:center; margin-top:0.5rem;">
+                Send Message
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section class="section faq-section">
+    <div class="section__inner">
+      <div class="reveal" style="text-align:center;">
+        <div class="eyebrow" style="justify-content:center;">Common Questions</div>
+        <h2 class="section-heading">Quick <em>answers</em></h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item reveal reveal--delay-1">
+          <h4>How long does it take to get an approval?</h4>
+          <p>Most applications receive an initial decision within 4–24 hours. Complex cases or those requiring additional documentation may take up to 48 hours. We'll always keep you updated.</p>
+        </div>
+        <div class="faq-item reveal reveal--delay-2">
+          <h4>Does applying affect my credit score?</h4>
+          <p>Our initial assessment involves a soft enquiry which does not affect your score. A full credit check is only conducted once you have consented and are proceeding with a specific application.</p>
+        </div>
+        <div class="faq-item reveal reveal--delay-1">
+          <h4>Do you charge a fee for your services?</h4>
+          <p>No. Our services to individuals are free. We earn a commission from the lending institution once a deal is concluded. This does not affect your interest rate or deal terms.</p>
+        </div>
+        <div class="faq-item reveal reveal--delay-2">
+          <h4>I have a poor credit record — can you still help?</h4>
+          <p>Possibly. We have access to specialist lenders who consider the full picture, not just a credit score. Be upfront with us and we'll give you an honest assessment.</p>
+        </div>
+        <div class="faq-item reveal reveal--delay-1">
+          <h4>I'm self-employed — can I get vehicle finance?</h4>
+          <p>Yes. Self-employed applicants need to provide 6 months' bank statements and supporting financial records. We know which lenders are most favourable to this profile.</p>
+        </div>
+        <div class="faq-item reveal reveal--delay-2">
+          <h4>How is my personal information protected?</h4>
+          <p>All data is processed in compliance with POPIA (Act 4 of 2013). We only collect what we need, retain it for the minimum required period, and never sell or share your data without consent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer__inner">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-mark">Eazy<span>.</span></div>
+          <div class="footer__brand-sub">F&I Solutions</div>
+          <p class="footer__brand-desc">Providing simple, strategic, and reliable vehicle finance solutions to individuals and dealerships across South Africa.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="dealer-partners.html">Dealer Partners</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Personal Vehicle Finance</a></li>
+            <li><a href="services.html">Refinancing</a></li>
+            <li><a href="dealer-partners.html">Dealer F&I Solutions</a></li>
+            <li><a href="dealer-partners.html">Floor Plan Finance</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.56 3.37 2 2 0 0 1 3.54 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.52A16 16 0 0 0 15.48 16l.88-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23 17.29z"/></svg>
+            <span>+27 (0) 00 000 0000</span>
+          </div>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>info@eazy.co.za</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__compliance">
+          <strong style="color:rgba(248,245,239,0.5);">Regulatory Notice:</strong> Eazy F&I Solutions is an authorised Financial Services Provider (FSP) in terms of the Financial Advisory and Intermediary Services Act, 37 of 2002 (FAIS Act). FSP License No. [XXXXX]. All credit applications are processed under the National Credit Act (NCA), Act 34 of 2005. Personal information is processed in compliance with POPIA, Act 4 of 2013.
+        </p>
+        <div class="footer__copy">
+          <span>&copy; 2025 Eazy F&I Solutions (Pty) Ltd. All rights reserved.</span>
+          <span>Registered in South Africa</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + target).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
