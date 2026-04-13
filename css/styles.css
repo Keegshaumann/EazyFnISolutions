@@ -16,19 +16,19 @@
 
    ============================================================ */
 
-/* ── ELECTRIC ── */
+/* ── CORPORATE NAVY (active) ── steel blue from logo, deep navy grounds */
 :root {
-  --black:       #080B14;
-  --deep:        #0C1020;
-  --surface:     #111828;
-  --surface-2:   #172030;
-  --border:      rgba(40, 110, 230, 0.2);
-  --gold:        #2868E8;
-  --gold-light:  #5A8FF2;
-  --gold-dim:    rgba(40, 110, 230, 0.12);
-  --white:       #F0F4FF;
-  --white-dim:   rgba(220, 228, 255, 0.55);
-  --white-faint: rgba(220, 228, 255, 0.1);
+  --black:       #04101E;
+  --deep:        #071828;
+  --surface:     #0D2238;
+  --surface-2:   #122B46;
+  --border:      rgba(65, 140, 210, 0.22);
+  --gold:        #3E8DCC;
+  --gold-light:  #63AADF;
+  --gold-dim:    rgba(62, 141, 204, 0.13);
+  --white:       #EDF4FF;
+  --white-dim:   rgba(210, 228, 255, 0.58);
+  --white-faint: rgba(210, 228, 255, 0.1);
 }
 
 /* ── STEEL ──
@@ -148,19 +148,6 @@ a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
 button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
 
-/* ============================================================
-   GRAIN OVERLAY
-   ============================================================ */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 256px 256px;
-}
 
 /* ============================================================
    NAVIGATION
@@ -178,7 +165,7 @@ body::before {
 }
 
 .nav.scrolled {
-  background: rgba(10, 10, 12, 0.92);
+  background: rgba(4, 16, 30, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-color: var(--border);
