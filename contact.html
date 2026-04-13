@@ -290,6 +290,7 @@
         <div class="reveal reveal--delay-2">
           <div class="form-tabs">
             <button class="tab-btn active" data-tab="personal">Personal Finance</button>
+            <button class="tab-btn" data-tab="business">Business Finance</button>
             <button class="tab-btn" data-tab="dealer">Dealer Enquiry</button>
             <button class="tab-btn" data-tab="general">General</button>
           </div>
@@ -361,6 +362,84 @@
               </div>
               <button type="submit" class="btn btn--gold" style="width:100%; justify-content:center; margin-top:0.5rem;">
                 Submit Application
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </form>
+          </div>
+
+          <!-- BUSINESS FINANCE -->
+          <div class="tab-content" id="tab-business">
+            <h3>Business Vehicle Finance Application</h3>
+            <p class="sub">Finance vehicles for your business fleet. We'll get back to you within 4 business hours.</p>
+            <form data-validate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="b-name">Contact Person *</label>
+                  <input type="text" id="b-name" placeholder="Your full name" required />
+                </div>
+                <div class="form-group">
+                  <label for="b-role">Your Role *</label>
+                  <input type="text" id="b-role" placeholder="e.g. Director, Fleet Manager" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="b-company">Business / Company Name *</label>
+                <input type="text" id="b-company" placeholder="Registered trading name" required />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="b-reg">Company Registration Number</label>
+                  <input type="text" id="b-reg" placeholder="e.g. 2010/123456/07" />
+                </div>
+                <div class="form-group">
+                  <label for="b-entity">Entity Type *</label>
+                  <select id="b-entity" required>
+                    <option value="">Select…</option>
+                    <option>Pty Ltd</option>
+                    <option>Close Corporation (CC)</option>
+                    <option>Sole Proprietor</option>
+                    <option>Partnership</option>
+                    <option>Trust</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="b-email">Email Address *</label>
+                  <input type="email" id="b-email" placeholder="you@business.co.za" required />
+                </div>
+                <div class="form-group">
+                  <label for="b-phone">Mobile Number *</label>
+                  <input type="tel" id="b-phone" placeholder="+27 00 000 0000" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="b-vehicles">Number of Vehicles Required</label>
+                  <select id="b-vehicles">
+                    <option value="">Select…</option>
+                    <option>1</option>
+                    <option>2–5</option>
+                    <option>6–10</option>
+                    <option>10+</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="b-budget">Approximate Budget / Vehicle Price</label>
+                  <input type="text" id="b-budget" placeholder="e.g. R350,000 per unit" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="b-notes">Additional Notes</label>
+                <textarea id="b-notes" placeholder="Vehicle types, intended use, any credit history notes…"></textarea>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" id="b-popia" required />
+                <label for="b-popia">I consent to Eazy F&I Solutions processing my information to assist with this business finance enquiry, in accordance with the <a href="#">POPIA Privacy Notice</a>. *</label>
+              </div>
+              <button type="submit" class="btn btn--gold" style="width:100%; justify-content:center; margin-top:0.5rem;">
+                Submit Business Application
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </button>
             </form>
