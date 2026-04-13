@@ -195,27 +195,13 @@ body::before {
 
 .nav__logo {
   display: flex;
-  flex-direction: column;
-  gap: 1px;
+  align-items: center;
 }
 
-.nav__logo-mark {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--white);
-  line-height: 1;
-}
-
-.nav__logo-mark span { color: var(--gold); }
-
-.nav__logo-sub {
-  font-size: 0.6rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-weight: 500;
+.nav__logo-img {
+  height: 44px;
+  width: auto;
+  display: block;
 }
 
 .nav__links {
