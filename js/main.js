@@ -21,7 +21,7 @@ if (hamburger) {
       spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
     }
   });
-}
+} //change detection
 
 /* ============================================================
    ACTIVE NAV LINK
