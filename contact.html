@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact — Eazy F&I Solutions</title>
-  <meta name="description" content="Get in touch with Eazy F&I Solutions. Apply for vehicle finance or make a dealer partnership enquiry." />
+  <meta name="description" content="Get in touch with Eazy F&I Solutions. Apply for vehicle finance or make a general enquiry." />
   <link rel="stylesheet" href="css/styles.css" />
   <style>
     /* ── CONTACT-SPECIFIC ── */
@@ -68,7 +68,6 @@
       margin-top: 0.2rem;
     }
 
-    /* Hours */
     .hours-box {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -100,64 +99,6 @@
     .hours-row span:first-child { color: var(--white-dim); }
     .hours-row span:last-child { color: var(--white); }
 
-    /* Form tabs */
-    .form-tabs {
-      display: flex;
-      gap: 1px;
-      background: var(--border);
-      border-radius: 4px 4px 0 0;
-      overflow: hidden;
-      margin-bottom: 0;
-    }
-
-    .tab-btn {
-      flex: 1;
-      padding: 1rem 1.5rem;
-      background: var(--surface-2);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--white-dim);
-      cursor: pointer;
-      transition: all 0.2s;
-      border: none;
-      text-align: center;
-    }
-
-    .tab-btn:hover { background: var(--surface); color: var(--white); }
-
-    .tab-btn.active {
-      background: var(--surface);
-      color: var(--gold);
-      box-shadow: inset 0 -2px 0 var(--gold);
-    }
-
-    .tab-content {
-      display: none;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-top: none;
-      border-radius: 0 0 4px 4px;
-      padding: 2.5rem;
-    }
-
-    .tab-content.active { display: block; }
-
-    .tab-content h3 {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-    }
-
-    .tab-content .sub {
-      font-size: 0.85rem;
-      color: var(--white-dim);
-      margin-bottom: 2rem;
-    }
-
-    /* FAQ */
     .faq-section { background: var(--deep); }
 
     .faq-grid {
@@ -257,7 +198,7 @@
             </div>
             <div>
               <div class="contact-channel__label">Email</div>
-              <div class="contact-channel__value">admin@eazyfisolutions.co.za</div>
+              <div class="contact-channel__value">admin@eazyfi.co.za</div>
               <div class="contact-channel__note">We reply within 4 business hours</div>
             </div>
           </div>
@@ -273,209 +214,72 @@
             </div>
           </div>
 
+          <div class="contact-channel">
+            <div class="contact-channel__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-channel__label">Address</div>
+              <div class="contact-channel__value">191 Gouws Avenue</div>
+              <div class="contact-channel__note">Raslouw AH, Centurion</div>
+            </div>
+          </div>
+
           <div class="hours-box">
             <div class="hours-box__header">Business Hours</div>
             <div class="hours-row"><span>Monday – Friday</span><span>08:00 – 17:00</span></div>
             <div class="hours-row"><span>Saturday</span><span>09:00 – 13:00</span></div>
-            <div class="hours-row"><span>Sunday & Public Holidays</span><span>Closed</span></div>
+            <div class="hours-row"><span>Sunday &amp; Public Holidays</span><span>Closed</span></div>
           </div>
 
           <div style="margin-top:1.5rem; padding:1.2rem 1.5rem; background:var(--gold-dim); border:1px solid rgba(40,110,230,0.12); border-radius:4px; font-size:0.8rem; color:var(--white-dim); line-height:1.6;">
             <strong style="color:var(--gold); font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">POPIA Notice</strong>
-            Personal information submitted via this form will be processed solely for the purpose of responding to your enquiry. Your data will not be shared without your consent. View our <a href="#" style="color:var(--gold); text-decoration:underline;">full privacy notice</a>.
+            Personal information submitted via this form will be processed solely for the purpose of responding to your enquiry. Your data will not be shared without your consent. View our <a href="privacy-policy.html" style="color:var(--gold); text-decoration:underline;">full privacy notice</a>.
           </div>
         </div>
 
         <!-- FORMS -->
         <div class="reveal reveal--delay-2">
-          <div class="form-tabs">
-            <button class="tab-btn active" data-tab="personal">Personal Finance</button>
-            <button class="tab-btn" data-tab="business">Business Finance</button>
-            <button class="tab-btn" data-tab="general">General</button>
-          </div>
-
-          <!-- PERSONAL APPLICATION -->
-          <div class="tab-content active" id="tab-personal">
-            <h3>Vehicle Finance Application</h3>
-            <p class="sub">Tell us what you need and we'll get back to you within 4 business hours.</p>
-            <form data-validate>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="p-first">First Name *</label>
-                  <input type="text" id="p-first" placeholder="Your first name" required />
-                </div>
-                <div class="form-group">
-                  <label for="p-last">Last Name *</label>
-                  <input type="text" id="p-last" placeholder="Your surname" required />
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="p-email">Email Address *</label>
-                  <input type="email" id="p-email" placeholder="your@email.co.za" required />
-                </div>
-                <div class="form-group">
-                  <label for="p-phone">Mobile Number *</label>
-                  <input type="tel" id="p-phone" placeholder="+27 00 000 0000" required />
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="p-type">Finance Type *</label>
-                  <select id="p-type" required>
-                    <option value="">Select…</option>
-                    <option>New Vehicle Finance</option>
-                    <option>Used Vehicle Finance</option>
-                    <option>Refinancing</option>
-                    <option>Balloon Settlement</option>
-                    <option>Business Vehicle Finance</option>
-                    <option>Not sure — advise me</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="p-budget">Approximate Budget / Vehicle Price</label>
-                  <input type="text" id="p-budget" placeholder="e.g. R250,000" />
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="p-employment">Employment Status *</label>
-                <select id="p-employment" required>
-                  <option value="">Select…</option>
-                  <option>Permanently employed</option>
-                  <option>Contract employee</option>
-                  <option>Self-employed / Business owner</option>
-                  <option>Pensioner / Other income</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="p-notes">Additional Notes</label>
-                <textarea id="p-notes" placeholder="Tell us anything relevant — vehicle you have in mind, credit history concerns, etc."></textarea>
-              </div>
-              <div class="form-check">
-                <input type="checkbox" id="p-popia" required />
-                <label for="p-popia">I consent to Eazy F&I Solutions processing my personal information to assist with this finance enquiry, in accordance with the <a href="#">POPIA Privacy Notice</a>. I understand my information will not be shared without my consent. *</label>
-              </div>
-              <div class="form-check">
-                <input type="checkbox" id="p-credit" />
-                <label for="p-credit">I consent to Eazy F&I Solutions conducting a soft credit check as part of the initial assessment (this will not affect my credit score).</label>
-              </div>
-              <button type="submit" class="btn btn--gold" style="width:100%; justify-content:center; margin-top:0.5rem;">
-                Submit Application
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </button>
-            </form>
-          </div>
-
-          <!-- BUSINESS FINANCE -->
-          <div class="tab-content" id="tab-business">
-            <h3>Business Vehicle Finance Application</h3>
-            <p class="sub">Finance vehicles for your business fleet. We'll get back to you within 4 business hours.</p>
-            <form data-validate>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="b-name">Contact Person *</label>
-                  <input type="text" id="b-name" placeholder="Your full name" required />
-                </div>
-                <div class="form-group">
-                  <label for="b-role">Your Role *</label>
-                  <input type="text" id="b-role" placeholder="e.g. Director, Fleet Manager" required />
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="b-company">Business / Company Name *</label>
-                <input type="text" id="b-company" placeholder="Registered trading name" required />
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="b-reg">Company Registration Number</label>
-                  <input type="text" id="b-reg" placeholder="e.g. 2010/123456/07" />
-                </div>
-                <div class="form-group">
-                  <label for="b-entity">Entity Type *</label>
-                  <select id="b-entity" required>
-                    <option value="">Select…</option>
-                    <option>Pty Ltd</option>
-                    <option>Close Corporation (CC)</option>
-                    <option>Sole Proprietor</option>
-                    <option>Partnership</option>
-                    <option>Trust</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="b-email">Email Address *</label>
-                  <input type="email" id="b-email" placeholder="you@business.co.za" required />
-                </div>
-                <div class="form-group">
-                  <label for="b-phone">Mobile Number *</label>
-                  <input type="tel" id="b-phone" placeholder="+27 00 000 0000" required />
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="b-vehicles">Number of Vehicles Required</label>
-                  <select id="b-vehicles">
-                    <option value="">Select…</option>
-                    <option>1</option>
-                    <option>2–5</option>
-                    <option>6–10</option>
-                    <option>10+</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="b-budget">Approximate Budget / Vehicle Price</label>
-                  <input type="text" id="b-budget" placeholder="e.g. R350,000 per unit" />
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="b-notes">Additional Notes</label>
-                <textarea id="b-notes" placeholder="Vehicle types, intended use, any credit history notes…"></textarea>
-              </div>
-              <div class="form-check">
-                <input type="checkbox" id="b-popia" required />
-                <label for="b-popia">I consent to Eazy F&I Solutions processing my information to assist with this business finance enquiry, in accordance with the <a href="#">POPIA Privacy Notice</a>. *</label>
-              </div>
-              <button type="submit" class="btn btn--gold" style="width:100%; justify-content:center; margin-top:0.5rem;">
-                Submit Business Application
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </button>
-            </form>
-          </div>
-
-          <!-- GENERAL -->
-          <div class="tab-content" id="tab-general">
-            <h3>General Enquiry</h3>
-            <p class="sub">Not sure where to start? Just ask — we'll point you in the right direction.</p>
-            <form data-validate>
+          <div style="background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:2.5rem;">
+            <h3 style="font-family:var(--font-display); font-size:1.25rem; font-weight:600; margin-bottom:0.3rem;">General Enquiry</h3>
+            <p style="font-size:0.85rem; color:var(--white-dim); margin-bottom:2rem;">Not sure where to start? Ask us anything — we'll point you in the right direction. Or email us directly at <a href="mailto:admin@eazyfi.co.za" style="color:var(--gold);">admin@eazyfi.co.za</a></p>
+            <form action="mailto:admin@eazyfi.co.za" method="post" enctype="text/plain" data-validate>
               <div class="form-row">
                 <div class="form-group">
                   <label for="g-name">Your Name *</label>
-                  <input type="text" id="g-name" placeholder="Your full name" required />
+                  <input type="text" id="g-name" name="name" placeholder="Your full name" required />
                 </div>
                 <div class="form-group">
                   <label for="g-email">Email Address *</label>
-                  <input type="email" id="g-email" placeholder="your@email.co.za" required />
+                  <input type="email" id="g-email" name="email" placeholder="your@email.co.za" required />
                 </div>
               </div>
               <div class="form-group">
                 <label for="g-phone">Phone Number</label>
-                <input type="tel" id="g-phone" placeholder="+27 00 000 0000" />
+                <input type="tel" id="g-phone" name="phone" placeholder="+27 00 000 0000" />
               </div>
               <div class="form-group">
                 <label for="g-message">Your Message *</label>
-                <textarea id="g-message" placeholder="How can we help?" required></textarea>
+                <textarea id="g-message" name="message" placeholder="How can we help?" required></textarea>
               </div>
               <div class="form-check">
                 <input type="checkbox" id="g-popia" required />
-                <label for="g-popia">I consent to Eazy F&I Solutions processing my personal information to respond to this enquiry, in accordance with the <a href="#">POPIA Privacy Notice</a>. *</label>
+                <label for="g-popia">I consent to Eazy F&amp;I Solutions processing my personal information to respond to this enquiry, in accordance with the <a href="privacy-policy.html">POPIA Privacy Notice</a>. *</label>
               </div>
               <button type="submit" class="btn btn--gold" style="width:100%; justify-content:center; margin-top:0.5rem;">
                 Send Message
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </button>
             </form>
+          </div>
+
+          <div style="margin-top:1.5rem; padding:2rem; background:var(--gold-dim); border:1px solid rgba(62,141,204,0.3); border-radius:4px; text-align:center;">
+            <div style="font-family:var(--font-display); font-size:1.1rem; font-weight:600; margin-bottom:0.5rem;">Ready to Apply for Finance?</div>
+            <p style="font-size:0.85rem; color:var(--white-dim); margin-bottom:1.2rem;">Start your vehicle finance application directly through our secure online portal.</p>
+            <a href="https://thirdparty.signio.co.za/ThirdPartyIntegration/application?skin=LIGHTSTONE&uuid=00000197-f510-d0f1-971a-4bd93b7825ff" target="_blank" rel="noopener" class="btn btn--gold">
+              Apply Now
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
           </div>
         </div>
 
@@ -522,8 +326,12 @@
   <!-- ── FOOTER ── -->
   <footer>
     <div class="footer__inner">
-      <div class="footer__grid">
-<div class="footer__col">
+      <div class="footer__grid footer__grid--4">
+        <div class="footer__col footer__col--brand">
+          <img src="js/images/TRANSPARENT LOGO/TRANSPARENT WHITE.png" alt="Eazy F&I Solutions" class="footer__logo-img" />
+          <p class="footer__brand-desc">Vehicle finance specialists serving South Africa with integrity and expertise.</p>
+        </div>
+        <div class="footer__col">
           <h4>Navigation</h4>
           <ul>
             <li><a href="index.html">Home</a></li>
@@ -538,8 +346,8 @@
           <ul>
             <li><a href="services.html">Personal Vehicle Finance</a></li>
             <li><a href="services.html">Refinancing</a></li>
-            <li><a href="dealer-partners.html">Dealer F&I Solutions</a></li>
-            <li><a href="dealer-partners.html">Floor Plan Finance</a></li>
+            <li><a href="dealer-partners.html">Dealer F&amp;I Solutions</a></li>
+            <li><a href="https://thirdparty.signio.co.za/ThirdPartyIntegration/application?skin=LIGHTSTONE&amp;uuid=00000197-f510-d0f1-971a-4bd93b7825ff" target="_blank" rel="noopener">Commercial Finance</a></li>
           </ul>
         </div>
         <div class="footer__col">
@@ -550,34 +358,29 @@
           </div>
           <div class="contact-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <span>admin@eazyfisolutions.co.za</span>
+            <span>admin@eazyfi.co.za</span>
+          </div>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>191 Gouws Avenue, Raslouw AH, Centurion</span>
           </div>
         </div>
       </div>
       <div class="footer__bottom">
         <p class="footer__compliance">
-          <strong style="color:rgba(248,245,239,0.5);">Regulatory Notice:</strong> Eazy F&I Solutions is an authorised Financial Services Provider (FSP) in terms of the Financial Advisory and Intermediary Services Act, 37 of 2002 (FAIS Act). FSP License No. [XXXXX]. All credit applications are processed under the National Credit Act (NCA), Act 34 of 2005. Personal information is processed in compliance with POPIA, Act 4 of 2013.
+          <strong style="color:rgba(248,245,239,0.5);">Regulatory Notice:</strong> Eazy F&amp;I Solutions is an authorised Financial Services Provider (FSP) in terms of the Financial Advisory and Intermediary Services Act, 37 of 2002 (FAIS Act). FSP License No. 28260, mandated under IDA Risk Management (Pty) Ltd. We are committed to treating customers fairly and operating in full compliance with the National Credit Act (NCA) and the Protection of Personal Information Act (POPIA), Act 4 of 2013. Your personal information is processed securely and will not be shared without your consent.
         </p>
         <div class="footer__copy">
-          <span>&copy; 2025 Eazy F&I Solutions (Pty) Ltd. All rights reserved.</span>
-          <span>Registered in South Africa</span>
+          <span>&copy; 2025 Eazy F&amp;I Solutions (Pty) Ltd. All rights reserved.</span>
+          <div class="footer__legal-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+          </div>
         </div>
       </div>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
-  <script>
-    // Tab switching
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const target = btn.dataset.tab;
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById('tab-' + target).classList.add('active');
-      });
-    });
-  </script>
 </body>
 </html>
