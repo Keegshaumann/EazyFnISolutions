@@ -82,13 +82,14 @@ document.querySelectorAll('.stat-counter').forEach(el => counterObserver.observe
    FORM VALIDATION & SUBMISSION
    ============================================================ */
 document.querySelectorAll('form[data-validate]').forEach(form => {
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     const requiredFields = form.querySelectorAll('[required]');
     let valid = true;
 
     requiredFields.forEach(field => {
       field.style.borderColor = '';
+      field.style.outline = '';
 
       if (field.type === 'checkbox' && !field.checked) {
         field.style.outline = '2px solid var(--red-alert)';
@@ -106,14 +107,36 @@ document.querySelectorAll('form[data-validate]').forEach(form => {
 
     const btn = form.querySelector('button[type="submit"]');
     const originalText = btn.innerHTML;
-    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Sent — we\'ll be in touch';
+    const sentMarkup = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Sent — we\'ll be in touch';
+
+    btn.innerHTML = 'Sending…';
     btn.disabled = true;
 
-    setTimeout(() => {
-      btn.innerHTML = originalText;
-      btn.disabled = false;
+    const endpoint = form.getAttribute('action');
+
+    // No HTTP endpoint configured — keep the original confirmation behaviour.
+    if (!endpoint || !/^https?:/i.test(endpoint)) {
+      btn.innerHTML = sentMarkup;
+      setTimeout(() => { btn.innerHTML = originalText; btn.disabled = false; form.reset(); }, 5000);
+      return;
+    }
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (!response.ok) throw new Error('Request failed with status ' + response.status);
+
+      btn.innerHTML = sentMarkup;
       form.reset();
-    }, 5000);
+      setTimeout(() => { btn.innerHTML = originalText; btn.disabled = false; }, 5000);
+    } catch (err) {
+      btn.innerHTML = 'Something went wrong — please try again';
+      setTimeout(() => { btn.innerHTML = originalText; btn.disabled = false; }, 4000);
+    }
   });
 });
 

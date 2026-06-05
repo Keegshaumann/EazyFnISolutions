@@ -6,6 +6,11 @@
   <title>Contact — Eazy F&I Solutions</title>
   <meta name="description" content="Get in touch with Eazy F&I Solutions. Apply for vehicle finance or make a general enquiry." />
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="favicon.ico?v=2" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=2" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=2" />
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png?v=2" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=2" />
   <style>
     /* ── CONTACT-SPECIFIC ── */
     .contact-layout {
@@ -243,7 +248,9 @@
           <div style="background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:2.5rem;">
             <h3 style="font-family:var(--font-display); font-size:1.25rem; font-weight:600; margin-bottom:0.3rem;">General Enquiry</h3>
             <p style="font-size:0.85rem; color:var(--white-dim); margin-bottom:2rem;">Not sure where to start? Ask us anything — we'll point you in the right direction. Or email us directly at <a href="mailto:admin@eazyfi.co.za" style="color:var(--gold);">admin@eazyfi.co.za</a></p>
-            <form action="mailto:admin@eazyfi.co.za" method="post" enctype="text/plain" data-validate>
+            <form action="https://formspree.io/f/mzdqzwkk" method="POST" data-validate>
+              <input type="hidden" name="_subject" value="New General Enquiry — Eazy F&I Solutions" />
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none !important" />
               <div class="form-row">
                 <div class="form-group">
                   <label for="g-name">Your Name *</label>
@@ -263,7 +270,7 @@
                 <textarea id="g-message" name="message" placeholder="How can we help?" required></textarea>
               </div>
               <div class="form-check">
-                <input type="checkbox" id="g-popia" required />
+                <input type="checkbox" id="g-popia" name="popia_consent" value="Yes" required />
                 <label for="g-popia">I consent to Eazy F&amp;I Solutions processing my personal information to respond to this enquiry, in accordance with the <a href="privacy-policy.html">POPIA Privacy Notice</a>. *</label>
               </div>
               <button type="submit" class="btn btn--gold" style="width:100%; justify-content:center; margin-top:0.5rem;">
@@ -375,6 +382,8 @@
           <div class="footer__legal-links">
             <a href="privacy-policy.html">Privacy Policy</a>
             <a href="terms.html">Terms of Service</a>
+            <a href="documents/fsca-fsp-licence-28260.pdf" target="_blank" rel="noopener">FSP Licence</a>
+            <a href="documents/ida-representative-certificate.pdf" target="_blank" rel="noopener">Representative Certificate</a>
           </div>
         </div>
       </div>
