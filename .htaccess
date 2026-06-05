@@ -1,0 +1,26 @@
+# ============================================================
+#  Eazy F&I Solutions — Clean URLs (hide the .html extension)
+#  Host: Hostinger (LiteSpeed / Apache — reads .htaccess)
+#
+#  NOTE: If an .htaccess file ALREADY exists in your Hostinger
+#  public_html, do NOT overwrite it — paste the three numbered
+#  Rewrite blocks below into it (just after "RewriteEngine On").
+# ============================================================
+
+RewriteEngine On
+RewriteBase /
+
+# 1. Send "/index" or "/index.html" to the canonical homepage "/"
+RewriteCond %{THE_REQUEST} \s/+index(?:\.html)?[\s?] [NC]
+RewriteRule ^ / [R=301,L]
+
+# 2. Redirect any "/page.html" request to the clean "/page" URL
+#    (301 = permanent; preserves any ?query string)
+RewriteCond %{THE_REQUEST} \s/+([^?\s]+)\.html(?:\?[^\s]*)?[\s] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# 3. Internally serve "/page" using "page.html" when that file exists
+#    (URL stays clean in the address bar; no redirect loop)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
