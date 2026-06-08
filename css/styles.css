@@ -1,7 +1,6 @@
 /* ============================================================
    CORE VARIABLES & RESET
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
 
 /* ============================================================
    PALETTES — uncomment ONE block, comment the rest
@@ -148,6 +147,32 @@ a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
 button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
 
+/* Visible keyboard focus indicator */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1000;
+  background: var(--gold);
+  color: #04101E;
+  padding: 10px 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus { left: 0; }
+
 
 /* ============================================================
    NAVIGATION
@@ -284,6 +309,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 .nav__mobile .nav__cta {
   margin-top: 2rem;
   display: inline-block;
+  padding: 14px 22px;
   color: var(--black) !important;
   border-bottom: none !important;
 }
@@ -522,7 +548,7 @@ footer {
 
 .footer__compliance {
   font-size: 0.72rem;
-  color: rgba(248, 245, 239, 0.35);
+  color: rgba(248, 245, 239, 0.7);
   line-height: 1.8;
   max-width: 900px;
 }
@@ -532,7 +558,7 @@ footer {
   align-items: center;
   justify-content: space-between;
   font-size: 0.72rem;
-  color: rgba(248, 245, 239, 0.3);
+  color: rgba(248, 245, 239, 0.7);
 }
 
 /* ============================================================
@@ -674,7 +700,7 @@ footer {
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: rgba(248, 245, 239, 0.25);
+  color: rgba(248, 245, 239, 0.6);
 }
 
 .form-group select option { background: var(--surface); }
@@ -986,7 +1012,7 @@ footer {
   font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 600;
-  color: rgba(210, 228, 255, 0.2);
+  color: rgba(210, 228, 255, 0.45);
   white-space: nowrap;
   padding: 0.4rem 2rem;
   transition: color 0.3s;
@@ -1140,16 +1166,18 @@ footer {
 
 .footer__legal-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
 }
 
 .footer__legal-links a {
   font-size: 0.72rem;
-  color: rgba(210, 228, 255, 0.3);
+  color: rgba(210, 228, 255, 0.75);
+  padding: 4px 0;
   transition: color 0.2s;
 }
 
-.footer__legal-links a:hover { color: rgba(210, 228, 255, 0.7); }
+.footer__legal-links a:hover { color: var(--white); }
 
 @media (max-width: 900px) {
   .footer__grid--4 { grid-template-columns: 1fr 1fr; }

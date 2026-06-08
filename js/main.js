@@ -9,9 +9,14 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 20);
 }, { passive: true });
 
-if (hamburger) {
+if (hamburger && mobileNav) {
+  mobileNav.id = mobileNav.id || 'mobile-nav';
+  hamburger.setAttribute('aria-controls', mobileNav.id);
+  hamburger.setAttribute('aria-expanded', 'false');
+
   hamburger.addEventListener('click', () => {
     mobileNav.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', String(mobileNav.classList.contains('open')));
     const spans = hamburger.querySelectorAll('span');
     if (mobileNav.classList.contains('open')) {
       spans[0].style.transform = 'rotate(45deg) translate(4.5px, 4.5px)';
