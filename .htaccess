@@ -32,6 +32,29 @@ RewriteCond %{REQUEST_FILENAME}\.html -f
 RewriteRule ^(.+?)/?$ $1.html [L]
 
 # ============================================================
+#  KEEP THE REPO'S INTERNAL FILES OFF THE WEB
+#
+#  A redeploy publishes every file in this repo, including notes
+#  that are not part of the site, SEO-STATUS.md first among them.
+#  These rules answer such files with a plain 404: "not found"
+#  rather than "forbidden", which would confirm the file exists.
+#
+#  Blocked: dot-files and dot-folders (.git/, .env, .gitignore),
+#  Markdown, README/LICENSE/CHANGELOG files, logs, backups, SQL
+#  dumps, shell scripts, YAML, lock files and package.json.
+#  Served as before: every page, css/, js/, the images,
+#  documents/, robots.txt and sitemap.xml. /.well-known/ stays
+#  reachable, because SSL certificate renewal uses it.
+#
+#  The first three lines match rules already proven live on
+#  this host; .markdown is added to the second.
+# ============================================================
+RedirectMatch 404 /\.(?!well-known(/|$))
+RedirectMatch 404 \.(md|markdown|log|bak|sql|sh|ya?ml|lock)$
+RedirectMatch 404 ^/package(-lock)?\.json$
+RedirectMatch 404 /(README|LICENSE|CHANGELOG)[^/]*$
+
+# ============================================================
 #  PERFORMANCE — gzip compression + browser caching
 # ============================================================
 
