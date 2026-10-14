@@ -25,11 +25,19 @@ RewriteRule ^ / [R=301,L]
 RewriteCond %{THE_REQUEST} \s/+([^?\s]+)\.html(?:\?[^\s]*)?[\s] [NC]
 RewriteRule ^ /%1 [R=301,L]
 
+# 2b. Send "/page/" to "/page" when page.html exists (one copy per page)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
 # 3. Internally serve "/page" using "page.html" when that file exists
 #    (URL stays clean in the address bar; no redirect loop)
+#    Top-level addresses only: "/services/foo" used to loop inside
+#    this rule and answer 500; it now gets the ordinary 404. New pages
+#    must stay flat (no folders of pages) for this rule to serve them.
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
-RewriteRule ^(.+?)/?$ $1.html [L]
+RewriteRule ^([^/]+?)/?$ $1.html [L]
 
 # ============================================================
 #  KEEP THE REPO'S INTERNAL FILES OFF THE WEB
