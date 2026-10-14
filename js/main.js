@@ -158,3 +158,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+/* ============================================================
+   FOOTER YEAR: the copyright year follows the visitor's clock,
+   so it never has to be edited by hand at New Year.
+   ============================================================ */
+document.querySelectorAll('[data-year]').forEach(el => {
+  el.textContent = String(new Date().getFullYear());
+});
