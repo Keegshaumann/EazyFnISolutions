@@ -269,6 +269,11 @@ select:focus-visible {
   flex-direction: column;
   gap: 5px;
   padding: 8px;
+  /* A 44px square to tap (15 October 2026 mobile review: it was 40 x 31). */
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav__hamburger span {
@@ -684,11 +689,19 @@ footer {
   padding: 13px 16px;
   color: var(--white);
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  /* Phones first: 16px, because iOS Safari zooms the page into any field set
+     smaller and leaves it zoomed (15 October 2026 mobile review: the contact
+     and dealer forms were 14.4px). Desktop keeps its 0.9rem. */
+  font-size: 1rem;
   transition: border-color 0.2s, box-shadow 0.2s;
   outline: none;
   -webkit-appearance: none;
   appearance: none;
+}
+@media (min-width: 901px) {
+  .form-group input,
+  .form-group select,
+  .form-group textarea { font-size: 0.9rem; }
 }
 
 .form-group input:focus,
