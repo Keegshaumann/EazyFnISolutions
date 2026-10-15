@@ -1201,3 +1201,24 @@ footer {
   .footer__grid--4 { grid-template-columns: 1fr; }
   .dealerships-grid { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   FOOTER CREDIT: "Website by Position Xero" at the end of the
+   copyright line (owner's instruction, 15 October 2026). The credit
+   never breaks inside itself; on phones it takes its own line and the
+   dot before it goes, so no separator is left hanging.
+   ============================================================ */
+.footer__credit { white-space: nowrap; }
+
+.footer__credit a {
+  color: rgba(210, 228, 255, 0.75);
+  transition: color 0.2s;
+}
+
+.footer__credit a:hover { color: var(--white); }
+
+@media (max-width: 600px) {
+  .footer__sep { display: none; }
+  .footer__credit { display: block; margin-top: 0.25rem; }
+  .footer__credit a { display: inline-block; padding: 4px 0; }
+}
