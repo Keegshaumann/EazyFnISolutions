@@ -1315,3 +1315,28 @@ footer {
   .dealership-card__body .btn,
   .info-box .btn { font-size: 0.78rem !important; }
 }
+
+/* ============================================================
+   TESTIMONIALS ON PHONES AND TABLETS (18 October 2026 phone audit).
+   The sticky panel started at the top of the screen, so the fixed
+   100px nav covered its top and half of the "Results that speak for
+   themselves" heading. Below 900px it now sticks just under the nav
+   and fills the rest of the screen; "safe center" keeps the heading
+   in view if a short screen cannot fit everything. On phones the
+   card padding and gaps are trimmed so the panel still fits in the
+   smaller space. Spacing only, no wording.
+   ============================================================ */
+@media (max-width: 900px) {
+  .testimonials-sticky {
+    top: var(--nav-h);
+    height: calc(100vh - var(--nav-h));
+    justify-content: safe center;
+  }
+}
+
+@media (max-width: 600px) {
+  .testimonials-header { margin-bottom: 1.5rem; }
+  .testimonial-card { padding: 1.75rem 1.5rem; }
+  .testimonial-card__text { margin-bottom: 1.5rem; }
+  .testimonials-progress-wrap { margin-top: 1.25rem; }
+}
