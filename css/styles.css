@@ -1340,3 +1340,14 @@ footer {
   .testimonial-card__text { margin-bottom: 1.5rem; }
   .testimonials-progress-wrap { margin-top: 1.25rem; }
 }
+
+/* ============================================================
+   NARROW PHONES: WIDER FORM FIELDS (18 October 2026 phone audit).
+   At 360px the 40px card padding left the dealer and contact form
+   fields only 238px wide. Below 400px the form cards take 20px.
+   The contact form card sets its padding inline, hence !important.
+   ============================================================ */
+@media (max-width: 400px) {
+  body .enquiry-form { padding: 1.75rem 1.25rem; }
+  .contact-layout > .reveal--delay-2 > div:first-child { padding: 1.75rem 1.25rem !important; }
+}
