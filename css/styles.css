@@ -1222,3 +1222,96 @@ footer {
   .footer__credit { display: block; margin-top: 0.25rem; }
   .footer__credit a { display: inline-block; padding: 4px 0; }
 }
+
+/* ============================================================
+   PHONES: LARGER TEXT (18 October 2026 phone audit, plan T-66).
+   Sizes only, below 600px. Not a word changes, and the FAIS /
+   regulatory notice stays exactly where and as it is, only larger
+   and at full strength. Targets: body and card text 16px, labels
+   and footer links at least 14px, eyebrows at least 12px.
+   Page-specific selectors start with "body" so they outrank each
+   page's own <style> block, which loads after this file;
+   !important appears only where a page sets the size in a style=""
+   attribute. Desktop is untouched.
+   ============================================================ */
+@media (max-width: 600px) {
+  /* Body and card text: 16px */
+  .card p,
+  .dealership-card__desc,
+  body .audience-card p,
+  body .process__step p,
+  body .benefit-card__text p,
+  body .timeline__item p,
+  body .enquiry-form .sub,
+  body .service-card p,
+  body .feature-list li,
+  body .check-list li,
+  body .info-box p,
+  body .faq-item p,
+  body .value-card p,
+  body .team-card__bio,
+  body .compliance-item p,
+  body .legal-body p,
+  body .legal-body ul li,
+  body .legal-intro-box { font-size: 1rem; }
+
+  /* The same, where the page sets the size inline */
+  .about-intro > .reveal > p,
+  .enquiry-grid > .reveal > p,
+  .enquiry-grid > .reveal > div > div > div:last-child > div,
+  .contact-layout > .reveal--delay-2 > div > p,
+  .legal-docs-box > p { font-size: 1rem !important; }
+  .enquiry-grid > .reveal > div > div > div:last-child > div:first-child { font-size: 1.0625rem !important; }
+  .contact-info > div:last-child { font-size: 0.9375rem !important; }
+
+  /* Labels, small details and footer links: 14px or more */
+  .form-group label,
+  .form-check label,
+  .testimonial-card__detail,
+  .footer__legal-links a,
+  .footer__copy,
+  body .trust-item,
+  body .contact-channel__note,
+  body .quote-source { font-size: 0.875rem; }
+
+  body .metric-row__label,
+  body .hours-row,
+  .footer__brand-desc,
+  .footer__col ul li a,
+  .footer__col .contact-item { font-size: 0.9375rem; }
+
+  /* The FAIS / regulatory notice: 14px at full strength, its
+     "Regulatory Notice:" label too (set to 50% inline) */
+  .footer__compliance {
+    font-size: 0.875rem;
+    color: rgb(248, 245, 239);
+  }
+  .footer__compliance strong { color: rgb(248, 245, 239) !important; }
+
+  /* Eyebrows and small capitals labels: 12px or more */
+  .eyebrow,
+  .badge,
+  .brand-scroller-label,
+  .footer__col h4,
+  .dealership-card__tagline,
+  .dealership-logo-sub,
+  .testimonials-scroll-hint,
+  body .hero__eyebrow,
+  body .audience-card__label,
+  body .metric-panel__header,
+  body .contact-channel__label,
+  body .hours-box__header,
+  body .compare-table th,
+  body .compliance-item__badge { font-size: 0.75rem; }
+
+  body .team-card__role { font-size: 0.8125rem; }
+
+  .contact-info > div:last-child > strong,
+  .legal-docs-box > strong { font-size: 0.75rem !important; }
+  .about-visual > div:last-child > div > div:last-child,
+  .legal-docs-box a > span > span:last-child { font-size: 0.8125rem !important; }
+
+  /* Two buttons set smaller than the rest inline; match the others */
+  .dealership-card__body .btn,
+  .info-box .btn { font-size: 0.78rem !important; }
+}
