@@ -1224,44 +1224,50 @@ footer {
 }
 
 /* ============================================================
-   PHONES: LARGER TEXT (18 October 2026 phone audit, plan T-66).
-   Sizes only, below 600px. Not a word changes, and the FAIS /
-   regulatory notice stays exactly where and as it is, only larger
-   and at full strength. Targets: body and card text 16px, labels
-   and footer links at least 14px, eyebrows at least 12px.
+   BODY AND CARD TEXT: 16px AT EVERY WIDTH (phones 18 October 2026,
+   plan T-66; computers too after the 18 October desktop audit, which
+   found card copy at 13 to 14.4px). Sizes only, not a word changes.
    Page-specific selectors start with "body" so they outrank each
    page's own <style> block, which loads after this file;
    !important appears only where a page sets the size in a style=""
-   attribute. Desktop is untouched.
+   attribute.
+   ============================================================ */
+.card p,
+.dealership-card__desc,
+body .audience-card p,
+body .process__step p,
+body .benefit-card__text p,
+body .timeline__item p,
+body .enquiry-form .sub,
+body .service-card p,
+body .feature-list li,
+body .check-list li,
+body .info-box p,
+body .faq-item p,
+body .value-card p,
+body .team-card__bio,
+body .compliance-item p,
+body .legal-body p,
+body .legal-body ul li,
+body .legal-intro-box { font-size: 1rem; }
+
+/* The same, where the page sets the size inline */
+.about-intro > .reveal > p,
+.enquiry-grid > .reveal > p,
+.enquiry-grid > .reveal > div > div > div:last-child > div,
+.contact-layout > .reveal--delay-2 > div > p,
+.legal-docs-box > p { font-size: 1rem !important; }
+.enquiry-grid > .reveal > div > div > div:last-child > div:first-child { font-size: 1.0625rem !important; }
+
+/* ============================================================
+   PHONES: LARGER TEXT (18 October 2026 phone audit, plan T-66).
+   Sizes only, below 600px. Not a word changes, and the FAIS /
+   regulatory notice stays exactly where and as it is, only larger
+   and at full strength. Targets: body and card text 16px (the
+   block above), labels and footer links at least 14px, eyebrows
+   at least 12px. Same "body" and !important rules as above.
    ============================================================ */
 @media (max-width: 600px) {
-  /* Body and card text: 16px */
-  .card p,
-  .dealership-card__desc,
-  body .audience-card p,
-  body .process__step p,
-  body .benefit-card__text p,
-  body .timeline__item p,
-  body .enquiry-form .sub,
-  body .service-card p,
-  body .feature-list li,
-  body .check-list li,
-  body .info-box p,
-  body .faq-item p,
-  body .value-card p,
-  body .team-card__bio,
-  body .compliance-item p,
-  body .legal-body p,
-  body .legal-body ul li,
-  body .legal-intro-box { font-size: 1rem; }
-
-  /* The same, where the page sets the size inline */
-  .about-intro > .reveal > p,
-  .enquiry-grid > .reveal > p,
-  .enquiry-grid > .reveal > div > div > div:last-child > div,
-  .contact-layout > .reveal--delay-2 > div > p,
-  .legal-docs-box > p { font-size: 1rem !important; }
-  .enquiry-grid > .reveal > div > div > div:last-child > div:first-child { font-size: 1.0625rem !important; }
   .contact-info > div:last-child { font-size: 0.9375rem !important; }
 
   /* Labels, small details and footer links: 14px or more */
