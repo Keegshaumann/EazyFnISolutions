@@ -1381,3 +1381,126 @@ body .legal-intro-box { font-size: 1rem; }
   body .enquiry-form { padding: 1.75rem 1.25rem; }
   .contact-layout > .reveal--delay-2 > div:first-child { padding: 1.75rem 1.25rem !important; }
 }
+
+/* ============================================================
+   28 OCTOBER 2026 PHONE REVIEW. Layout and sizes only; not a word
+   of the site's copy changes. The one new element is the header
+   "Apply Now" button, which repeats the homepage's own "Apply Now"
+   label and application link.
+   ============================================================ */
+
+/* Header "Apply Now": hidden on computers, where the full menu shows.
+   Below 900px it sits beside the menu button, so every page offers
+   the application on its first screen. At 360px it needs about 100px:
+   the logo keeps its full size (it no longer shrinks), and the button
+   may cover the last 8px of the logo image, which is transparent
+   margin, so it still stands about 14px clear of the artwork. Title
+   case rather than capitals keeps it that narrow. */
+.nav__apply { display: none; }
+
+@media (max-width: 900px) {
+  .nav__logo {
+    flex-shrink: 0;
+    margin-right: -8px;
+    /* The 180px logo image hung 40px below the 100px header, an invisible
+       home link over the top of every page. Its box now stops at the
+       header's edge; the artwork itself sits inside and is not cut. */
+    height: var(--nav-h);
+    overflow: hidden;
+  }
+
+  .nav__apply {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-left: auto;
+    min-height: 44px;
+    padding: 0 12px;
+    background: var(--gold);
+    color: #ffffff;
+    border-radius: 2px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-variation-settings: 'wght' 650;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .nav__apply:hover { background: var(--gold-light); }
+}
+
+/* Phones under 350px (older and small models): a slightly smaller logo
+   so the logo, the button and the menu button still fit on one row. */
+@media (max-width: 349px) {
+  .nav__logo-img { height: 140px; }
+}
+
+/* Testimonials below 900px: no pinning. The panel held the page still
+   for about 2,200px of scrolling while the cards slid sideways, and
+   cut off the last card at the end. The cards are now an ordinary
+   swipeable row: each snaps into place, the next one peeks in from
+   the right, and the bar under them follows the swipe. Computers keep
+   the scroll-driven carousel. */
+@media (max-width: 900px) {
+  .testimonials-section { height: auto; }
+
+  .testimonials-sticky {
+    position: relative;
+    top: auto;
+    height: auto;
+    overflow: visible;
+    display: block;
+    padding: 0.5rem 0 clamp(56px, 10vw, 80px);
+  }
+
+  .testimonials-overflow {
+    overflow: visible;
+    padding-left: 0;
+  }
+
+  .testimonials-track {
+    gap: 1rem;
+    padding: 0.5rem var(--gutter) 1rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .testimonials-track::-webkit-scrollbar { display: none; }
+
+  .testimonial-card,
+  .testimonial-card:hover {
+    flex: 0 0 calc(100% - 2.5rem);
+    min-width: 0;
+    max-width: 460px;
+    scroll-snap-align: start;
+    transform: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .testimonial-card { padding-left: 1.25rem; padding-right: 1.25rem; }
+}
+
+/* Phones: text and buttons a size up. Eyebrows and the brand-scroller
+   label were 12px; button labels were 12.48px. White on the brand blue
+   measures 3.57:1, so the blue buttons also get a heavier label (the
+   colours themselves stay). */
+@media (max-width: 600px) {
+  .eyebrow,
+  body .hero__eyebrow,
+  .brand-scroller-label { font-size: 0.8125rem; }
+
+  .btn,
+  .dealership-card__body .btn,
+  .info-box .btn,
+  .nav__mobile .nav__cta { font-size: 0.875rem !important; }
+
+  .btn--gold { font-variation-settings: 'wght' 650; }
+}

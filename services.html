@@ -25,7 +25,7 @@
   <meta name="twitter:title" content="Vehicle Finance Services: New, Used, Refinance | Eazy F&I" />
   <meta name="twitter:description" content="New and used vehicle finance, refinancing, balloon settlement, business and fleet finance, and help for credit-challenged buyers. Based in Centurion." />
   <meta name="twitter:image" content="https://eazyfi.co.za/og-image.png" />
-  <link rel="stylesheet" href="css/styles.css?v=20261018c" />
+  <link rel="stylesheet" href="css/styles.css?v=20261028a" />
   <link rel="icon" href="favicon.ico?v=2" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=2" />
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=2" />
@@ -101,9 +101,12 @@
       gap: 0.5rem;
     }
 
+    /* The dash sits level with the first line, and a line that wraps
+       starts under the text, not under the dash (28 October 2026: on
+       phones the dash floated to the middle of a two-line item). */
     .feature-list li {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 0.6rem;
       font-size: 0.83rem;
       color: var(--white-dim);
@@ -112,6 +115,7 @@
     .feature-list li::before {
       content: '';
       width: 16px; height: 1px;
+      margin-top: calc(0.85em - 0.5px);
       background: var(--gold);
       flex-shrink: 0;
     }
@@ -214,6 +218,72 @@
       .services-grid { grid-template-columns: 1fr; }
       .eligibility__grid { grid-template-columns: 1fr; gap: 2.5rem; }
     }
+
+    /* Phones: the four-column table was squeezed (one heading broke over
+       four lines, and "Best For" sat off the screen). Each structure
+       becomes a card, and each answer carries its column heading, the
+       same words as the table's own header row. */
+    @media (max-width: 600px) {
+      .compare-table,
+      .compare-table tbody,
+      .compare-table tr,
+      .compare-table td { display: block; width: 100%; }
+
+      .compare-table thead {
+        position: absolute;
+        width: 1px; height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        white-space: nowrap;
+      }
+
+      .compare-table tr {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 0.25rem 1.25rem;
+        margin-bottom: 1rem;
+      }
+
+      .compare-table tr:last-child { margin-bottom: 0; }
+
+      .compare-table td,
+      .compare-table tr:last-child td {
+        padding: 0.8rem 0;
+        font-size: 1rem;
+        line-height: 1.6;
+        border-bottom: 1px solid rgba(40,110,230,0.12);
+      }
+
+      .compare-table td:last-child,
+      .compare-table tr:last-child td:last-child { border-bottom: none; }
+
+      .compare-table td:first-child,
+      .compare-table tr:last-child td:first-child {
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+        font-weight: 600;
+        padding-top: 1rem;
+      }
+
+      .compare-table td[data-label]::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 0.15rem;
+        font-family: var(--font-body);
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+
+      .compare-table tr:hover td { background: none; }
+
+      /* "Lessor retains ownership" was 20% white, hard to read on a phone */
+      .compare-table .x-icon { color: var(--white-dim); }
+    }
   </style>
 </head>
 <body>
@@ -231,6 +301,7 @@
         <a href="/about">About Us</a>
         <a href="/contact" class="nav__cta">Get in Touch</a>
       </div>
+      <a href="https://thirdparty.signio.co.za/ThirdPartyIntegration/application?skin=LIGHTSTONE&amp;uuid=00000197-f510-d0f1-971a-4bd93b7825ff" target="_blank" rel="noopener" class="nav__apply">Apply Now</a>
       <button class="nav__hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -419,27 +490,27 @@
           <tbody>
             <tr>
               <td>Instalment Sale (HP)</td>
-              <td class="check-icon">&#10003; Yes, from day one</td>
-              <td class="check-icon">&#10003; Optional</td>
-              <td>Individuals & businesses wanting full ownership</td>
+              <td class="check-icon" data-label="You Own the Vehicle">&#10003; Yes, from day one</td>
+              <td class="check-icon" data-label="Balloon Option">&#10003; Optional</td>
+              <td data-label="Best For">Individuals & businesses wanting full ownership</td>
             </tr>
             <tr>
               <td>Finance Lease</td>
-              <td style="color:var(--white-dim);">At end of term</td>
-              <td class="check-icon">&#10003; Built-in residual</td>
-              <td>Lower monthly cost, VAT-registered entities</td>
+              <td style="color:var(--white-dim);" data-label="You Own the Vehicle">At end of term</td>
+              <td class="check-icon" data-label="Balloon Option">&#10003; Built-in residual</td>
+              <td data-label="Best For">Lower monthly cost, VAT-registered entities</td>
             </tr>
             <tr>
               <td>Operating Lease</td>
-              <td class="x-icon">&#10005; Lessor retains ownership</td>
-              <td>–</td>
-              <td>Businesses wanting off-balance-sheet financing</td>
+              <td class="x-icon" data-label="You Own the Vehicle">&#10005; Lessor retains ownership</td>
+              <td data-label="Balloon Option">–</td>
+              <td data-label="Best For">Businesses wanting off-balance-sheet financing</td>
             </tr>
             <tr>
               <td>Refinancing</td>
-              <td class="check-icon">&#10003; Already yours</td>
-              <td>Depends on existing deal</td>
-              <td>Reducing instalments on existing agreements</td>
+              <td class="check-icon" data-label="You Own the Vehicle">&#10003; Already yours</td>
+              <td data-label="Balloon Option">Depends on existing deal</td>
+              <td data-label="Best For">Reducing instalments on existing agreements</td>
             </tr>
           </tbody>
         </table>

@@ -25,7 +25,7 @@
   <meta name="twitter:title" content="Vehicle Finance Broker in Centurion | Eazy F&I Solutions" />
   <meta name="twitter:description" content="Eazy F&I Solutions in Centurion sends one application to multiple banks and financiers for new, used and business vehicle finance. Apply online." />
   <meta name="twitter:image" content="https://eazyfi.co.za/og-image.png" />
-  <link rel="stylesheet" href="css/styles.css?v=20261018c" />
+  <link rel="stylesheet" href="css/styles.css?v=20261028a" />
   <link rel="icon" href="favicon.ico?v=2" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=2" />
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=2" />
@@ -425,6 +425,7 @@
         <a href="/about">About Us</a>
         <a href="/contact" class="nav__cta">Get in Touch</a>
       </div>
+      <a href="https://thirdparty.signio.co.za/ThirdPartyIntegration/application?skin=LIGHTSTONE&amp;uuid=00000197-f510-d0f1-971a-4bd93b7825ff" target="_blank" rel="noopener" class="nav__apply">Apply Now</a>
       <button class="nav__hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -820,7 +821,16 @@
       var track   = document.getElementById('testimonials-track');
       var bar     = document.getElementById('testimonials-progress');
       if (!section || !track) return;
+      // Below 900px the cards are a swipeable row (css/styles.css, 28
+      // October 2026): no scroll-driven shift, and the bar shows how far
+      // along the row the visitor has swiped.
+      var phone = window.matchMedia('(max-width: 900px)');
       function update() {
+        if (phone.matches) {
+          track.style.transform = '';
+          if (bar) bar.style.width = Math.min(100, (track.scrollLeft + track.clientWidth) / track.scrollWidth * 100) + '%';
+          return;
+        }
         var sectionTop = section.getBoundingClientRect().top;
         var sectionH   = section.offsetHeight;
         var viewH      = window.innerHeight;
@@ -831,6 +841,7 @@
       }
       window.addEventListener('scroll', update, { passive: true });
       window.addEventListener('resize', update);
+      track.addEventListener('scroll', update, { passive: true });
       update();
     })();
   </script>

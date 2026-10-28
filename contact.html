@@ -25,7 +25,7 @@
   <meta name="twitter:title" content="Contact Eazy F&I Solutions | Vehicle Finance, Centurion" />
   <meta name="twitter:description" content="Contact Eazy F&I Solutions in Centurion: apply for vehicle or car finance, ask about refinancing, or enquire about a dealer partnership. Call or WhatsApp." />
   <meta name="twitter:image" content="https://eazyfi.co.za/og-image.png" />
-  <link rel="stylesheet" href="css/styles.css?v=20261018c" />
+  <link rel="stylesheet" href="css/styles.css?v=20261028a" />
   <link rel="icon" href="favicon.ico?v=2" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=2" />
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=2" />
@@ -59,6 +59,21 @@
     }
 
     .contact-channel:hover { border-color: rgba(40,110,230,0.12); }
+
+    /* The whole phone, email and WhatsApp card is the link, not just the
+       20px line of text (28 October 2026 phone review). The link's own
+       box stays where it is; an invisible layer stretches its tap area
+       over the card. The address card has no link and is unchanged. */
+    .contact-channel { position: relative; }
+
+    .contact-channel__value a::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+    }
+
+    .contact-channel:focus-within { border-color: var(--gold); }
 
     .contact-channel__icon {
       width: 40px; height: 40px;
@@ -176,6 +191,7 @@
         <a href="/about">About Us</a>
         <a href="/contact" class="nav__cta active">Get in Touch</a>
       </div>
+      <a href="https://thirdparty.signio.co.za/ThirdPartyIntegration/application?skin=LIGHTSTONE&amp;uuid=00000197-f510-d0f1-971a-4bd93b7825ff" target="_blank" rel="noopener" class="nav__apply">Apply Now</a>
       <button class="nav__hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
