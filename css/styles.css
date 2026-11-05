@@ -1504,3 +1504,14 @@ body .legal-intro-box { font-size: 1rem; }
 
   .btn--gold { font-variation-settings: 'wght' 650; }
 }
+
+/* ============================================================
+   PREFERRED SOURCE BADGE: Google's own "Add as a preferred source"
+   badge under the legal line (owner, 5 November 2026). Left beside
+   the left-aligned line; centred on phones, where that line centres.
+   ============================================================ */
+.pref-source { display: inline-block; align-self: flex-start; line-height: 0; }
+
+@media (max-width: 600px) {
+  .pref-source { align-self: center; }
+}
